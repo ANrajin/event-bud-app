@@ -1,0 +1,70 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components{
+    .text-2xs{
+        font-size: 0.5rem !important;
+    }
+
+    /* Colors */
+
+    /* Button */
+    .btn{
+        @apply px-5 py-2 rounded-md transition ease-in-out
+    }
+
+    .btn-primary{
+        @apply bg-green-600 text-white
+    }
+
+    .btn-primary:hover{
+        @apply bg-green-500
+    }
+
+    .btn-primary:focus{
+        @apply outline-none ring-2 bg-green-600 ring-offset-1
+    }
+
+    /* Sidebar */
+    .sidebar{
+        @apply w-60 px-3 bg-slate-900 min-h-screen pt-5 transition-all duration-300
+    }
+
+    .sidebar-collapsed{
+        @apply w-14 overflow-hidden
+    }
+
+    .brand{
+        @apply flex items-center gap-x-2
+    }
+
+    /* Navigation */
+    .nav-links{
+        @apply flex flex-col gap-y-3 pt-10 font-semibold;
+    }
+
+    .nav-item{
+        @apply inline-flex w-full gap-x-2 items-center px-2 py-1 text-gray-500 transition duration-300 ease-in-out rounded overflow-hidden
+    }
+
+    .nav-item:hover{
+        @apply bg-slate-800 text-green-600
+    }
+
+    .nav-item i::before{
+        @apply inline
+    }
+
+    .sub-menu{
+        position: relative;
+    }
+
+    .sub-menu .sub-menu-icon{
+        @apply absolute inset-y-0 right-0 p-2 flex items-center
+    }
+
+    .sub-menu-item{
+        @apply flex flex-col ml-4 pl-2 border-l border-slate-700 text-sm overflow-hidden transition-[max-height] duration-300 ease-in-out
+    }
+}

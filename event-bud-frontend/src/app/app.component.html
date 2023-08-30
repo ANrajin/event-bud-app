@@ -1,0 +1,127 @@
+<div class="flex w-full font-sans bg-slate-100">
+  <aside class="sidebar" [ngClass]="collapsed ? 'sidebar-collapsed' : ''">
+    <div class="flex items-center min-h-[2rem]" [ngClass]="collapsed ? 'justify-evenly' : 'justify-between'">
+      <a href="#" class="brand" [ngClass]="collapsed ? 'hidden' : ''">
+        <img src="../assets/my-logo.png" alt="event bud" class="w-5">
+        <h1 class="text-xl font-bold text-green-500">EVENTBUD</h1>
+      </a>
+      <button type="button" class="bg-slate-700 px-1 rounded hover:text-green-600 transition ease-in-out" (click)="sidebarCollapsedHandler()">
+        <i class="bi" [ngClass]="collapsed ? 'bi-arrow-right-short' : 'bi-arrow-left-short'"></i>
+      </button>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="#" class="nav-item">
+          <i class="bi bi-columns-gap"></i>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-item">
+          <i class="bi bi-box"></i>
+          Items
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="nav-item sub-menu" (click)="subMenuToggleHandler($event)">
+          <i class="bi bi-sliders2-vertical"></i>
+          Settings
+          <span class="sub-menu-icon">
+            <i class="bi bi-chevron-down text-2xs"></i>
+          </span>
+        </a>
+        <ul class="sub-menu-item max-h-0">
+          <li>
+            <a href="#" class="nav-item">
+              Profile
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              Users
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              Website
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="nav-item sub-menu" (click)="subMenuToggleHandler($event)">
+          <i class="bi bi-sliders2-vertical"></i>
+          Settings
+          <span class="sub-menu-icon">
+            <i class="bi bi-chevron-down text-2xs"></i>
+          </span>
+        </a>
+        <ul class="sub-menu-item max-h-0">
+          <li>
+            <a href="#" class="nav-item">
+              Profile
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              Users
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              Website
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="nav-item sub-menu" (click)="subMenuToggleHandler($event)">
+          <i class="bi bi-sliders2-vertical"></i>
+          Settings
+          <span class="sub-menu-icon">
+            <i class="bi bi-chevron-down text-2xs"></i>
+          </span>
+        </a>
+        <ul class="sub-menu-item max-h-0">
+          <li>
+            <a href="#" class="nav-item">
+              Profile
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              Users
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              Website
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" class="nav-item">
+          <i class="bi bi-box-arrow-right"></i>
+          Logout
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <main class="flex-1 p-4">
+    <div class="flex items-center justify-between">
+      <div class="leading-relaxed">
+        <h1 class="text-2xl font-semibold text-gray-800">Products</h1>
+        <p class="text-sm font-medium text-gray-700">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero odit odio laboriosam nostrum aut ratione a quis saepe
+          nam,
+          veritatis incidunt beatae in vitae deserunt?
+        </p>
+      </div>
+      <button type="button" class="btn btn-primary">Create Product</button>
+    </div>
+  </main>
+</div>
+
+<router-outlet></router-outlet>
