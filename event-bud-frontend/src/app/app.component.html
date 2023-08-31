@@ -3,105 +3,50 @@
     <div class="flex items-center min-h-[2rem]" [ngClass]="collapsed ? 'justify-evenly' : 'justify-between'">
       <a href="#" class="brand" [ngClass]="collapsed ? 'hidden' : ''">
         <img src="../assets/my-logo.png" alt="event bud" class="w-5">
-        <h1 class="text-xl font-bold text-green-500">EVENTBUD</h1>
+        <h1 class="text-xl font-bold text-slate-300">EVENTBUD</h1>
       </a>
       <button type="button" class="bg-slate-700 px-1 rounded hover:text-green-600 transition ease-in-out" (click)="sidebarCollapsedHandler()">
         <i class="bi" [ngClass]="collapsed ? 'bi-arrow-right-short' : 'bi-arrow-left-short'"></i>
       </button>
     </div>
-    <ul class="nav-links">
+    <ul class="menu-links">
       <li>
-        <a href="#" class="nav-item">
+        <a href="#" class="menu-item active">
           <i class="bi bi-columns-gap"></i>
           Dashboard
         </a>
       </li>
       <li>
-        <a href="#" class="nav-item">
+        <a href="#" class="menu-item">
           <i class="bi bi-box"></i>
           Items
         </a>
       </li>
       <li>
-        <a href="javascript:void(0)" class="nav-item sub-menu" (click)="subMenuToggleHandler($event)">
+        <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="false" (click)="subMenuToggleHandler($event)">
           <i class="bi bi-sliders2-vertical"></i>
           Settings
-          <span class="sub-menu-icon">
-            <i class="bi bi-chevron-down text-2xs"></i>
-          </span>
         </a>
-        <ul class="sub-menu-item max-h-0">
+        <ul class="sub-menu-item">
           <li>
-            <a href="#" class="nav-item">
+            <a href="#" class="menu-item">
               Profile
             </a>
           </li>
           <li>
-            <a href="#" class="nav-item">
+            <a href="#" class="menu-item active">
               Users
             </a>
           </li>
           <li>
-            <a href="#" class="nav-item">
+            <a href="#" class="menu-item">
               Website
             </a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="javascript:void(0)" class="nav-item sub-menu" (click)="subMenuToggleHandler($event)">
-          <i class="bi bi-sliders2-vertical"></i>
-          Settings
-          <span class="sub-menu-icon">
-            <i class="bi bi-chevron-down text-2xs"></i>
-          </span>
-        </a>
-        <ul class="sub-menu-item max-h-0">
-          <li>
-            <a href="#" class="nav-item">
-              Profile
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              Users
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              Website
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="javascript:void(0)" class="nav-item sub-menu" (click)="subMenuToggleHandler($event)">
-          <i class="bi bi-sliders2-vertical"></i>
-          Settings
-          <span class="sub-menu-icon">
-            <i class="bi bi-chevron-down text-2xs"></i>
-          </span>
-        </a>
-        <ul class="sub-menu-item max-h-0">
-          <li>
-            <a href="#" class="nav-item">
-              Profile
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              Users
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-item">
-              Website
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="nav-item">
+        <a href="#" class="menu-item">
           <i class="bi bi-box-arrow-right"></i>
           Logout
         </a>
@@ -109,19 +54,25 @@
     </ul>
   </aside>
 
-  <main class="flex-1 p-4">
-    <div class="flex items-center justify-between">
-      <div class="leading-relaxed">
-        <h1 class="text-2xl font-semibold text-gray-800">Products</h1>
-        <p class="text-sm font-medium text-gray-700">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero odit odio laboriosam nostrum aut ratione a quis saepe
-          nam,
-          veritatis incidunt beatae in vitae deserunt?
-        </p>
+  <div class="flex-1">
+    <header class="p-2 border border-b">
+      <p>Jello</p>
+    </header>
+    <main>
+      <div class="flex items-center justify-between">
+        <div class="leading-relaxed">
+          <h1 class="text-2xl font-semibold text-gray-800">Products</h1>
+          <p class="text-sm font-medium text-gray-700">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero odit odio laboriosam nostrum aut ratione a quis
+            saepe
+            nam,
+            veritatis incidunt beatae in vitae deserunt?
+          </p>
+        </div>
+        <button type="button" class="btn btn-primary">Create Product</button>
       </div>
-      <button type="button" class="btn btn-primary">Create Product</button>
-    </div>
-  </main>
+    </main>
+  </div>
 </div>
 
 <router-outlet></router-outlet>

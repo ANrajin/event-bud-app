@@ -16,47 +16,23 @@ export class AppComponent implements OnInit {
   sidebarCollapsedHandler = () => {
     this.collapsed = !this.collapsed;
 
-    const subMenuItems = this.elementRef.nativeElement.querySelectorAll(".sub-menu-item");
-    const subMenuIcons = this.elementRef.nativeElement.querySelectorAll(".sub-menu-icon");
+    const subMenu = this.elementRef.nativeElement.querySelectorAll(".sub-menu");
 
-    if (this.collapsed) {
-      subMenuItems.forEach((subMenuItem:Element) => {
-        this.renderer.addClass(subMenuItem, '!max-h-0');
-      });
+    subMenu.forEach((subMenu: Element) => {
+      if(subMenu.getAttribute('aria-expanded') == 'true')
+        subMenu.setAttribute('aria-expanded', 'false');
 
-      subMenuIcons.forEach((subMenuIcon:Element) => {
-        this.renderer.addClass(subMenuIcon, '!hidden');
-      });
-    }
-    else
-    {
-      subMenuItems.forEach((subMenuItem:Element) => {
-        this.renderer.removeClass(subMenuItem, '!max-h-0');
-      });
-
-      subMenuIcons.forEach((subMenuIcon:Element) => {
-        this.renderer.removeClass(subMenuIcon, '!hidden');
-      });
-    }
+      subMenu.toggleAttribute('icon-hidden');
+    });
   }
 
   subMenuToggleHandler = (event:MouseEvent) => {
     const elem = event.target as HTMLElement;
-    const targetElem = elem.closest("a.sub-menu")?.nextSibling as Element;
-    const arrow = elem.closest("a.sub-menu")?.children[1].children[0] as Element;
+    const subMenu = elem.closest("a.sub-menu") as Element;
 
-    if (targetElem && targetElem?.classList.contains("max-h-0"))
-    {
-      this.renderer.addClass(targetElem, "max-h-96");
-      this.renderer.removeClass(targetElem, "max-h-0");
-    }
+    if(subMenu.getAttribute('aria-expanded') == 'false')
+      subMenu.setAttribute('aria-expanded', 'true');
     else
-    {
-      this.renderer.addClass(targetElem, "max-h-0");
-      this.renderer.removeClass(targetElem, "max-h-96");
-    }
-
-    if (arrow && arrow.classList.contains("!rotate-180")) this.renderer.removeClass(arrow, "!rotate-180");
-    else this.renderer.addClass(arrow, "!rotate-180");
+      subMenu.setAttribute('aria-expanded', 'false');
   }
 }
