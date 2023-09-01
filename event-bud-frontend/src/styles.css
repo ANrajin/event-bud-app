@@ -1,8 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
 @layer components{
+    *{
+        font-family: 'Inter', sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+    }
+
     /* Text size */
     .text-2xs{
         font-size: 0.5rem !important;
@@ -14,15 +21,15 @@
     }
 
     .btn-primary{
-        @apply bg-green-600 text-white
+        @apply bg-emerald-600 text-white
     }
 
     .btn-primary:hover{
-        @apply bg-green-500
+        @apply bg-emerald-500
     }
 
     .btn-primary:focus{
-        @apply outline-none ring-2 bg-green-600 ring-offset-1
+        @apply outline-none ring-2 bg-emerald-600 ring-offset-1
     }
 
     /* Sidebar */
@@ -40,7 +47,7 @@
 
     /* Navigation */
     .menu-links{
-        @apply flex flex-col gap-y-3 pt-10 font-semibold;
+        @apply flex flex-col gap-y-3 pt-5 font-medium;
     }
 
     .menu-item{
@@ -48,11 +55,11 @@
     }
 
     .menu-item.active{
-        @apply text-green-600
+        @apply text-emerald-600
     }
 
     .menu-item:hover{
-        @apply bg-slate-800 text-green-600
+        @apply bg-slate-800 text-emerald-600
     }
 
     .menu-item i::before{
@@ -91,5 +98,10 @@
 
     .sub-menu[aria-expanded=true]+.sub-menu-item {
         @apply !max-h-96
+    }
+
+    /* Card */
+    .card{
+        @apply p-4 mb-4 h-full bg-white rounded-lg shadow-md shadow-gray-200
     }
 }

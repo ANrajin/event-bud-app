@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
@@ -8,6 +9,7 @@ import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'event-bud-frontend';
   collapsed: boolean = false;
+  eventDate: any = formatDate(new Date(), 'MMM dd, yyyy', 'en');
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef){}
   
