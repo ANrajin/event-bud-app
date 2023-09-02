@@ -1,0 +1,9 @@
+<div class="flex w-full items-start font-sans bg-slate-100">
+  <app-sidebar class="sidebar" (sidebarCollapsed)="onSidebarCollapsed($event)" [ngClass]="collapsed ? 'sidebar-collapsed' : ''"></app-sidebar>
+
+  <div class="flex-1">
+    <main class="min-h-screen p-4">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

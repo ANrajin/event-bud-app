@@ -1,0 +1,56 @@
+<aside>
+    <div class="flex items-center min-h-[2rem]" [ngClass]="collapsed ? 'justify-evenly' : 'justify-between'">
+        <a href="#" class="brand" [ngClass]="collapsed ? 'scale-0 w-0' : ''">
+            <img src="../assets/my-logo.png" alt="event bud" class="w-5">
+            <h1 class="text-xl font-bold text-slate-300">EVENTBUD</h1>
+        </a>
+        <button type="button" class="bg-slate-700 px-1 rounded hover:text-emerald-600 transition ease-in-out"
+            (click)="sidebarCollapsedHandler()">
+            <i class="bi" [ngClass]="collapsed ? 'bi-arrow-right-short' : 'bi-arrow-left-short'"></i>
+        </button>
+    </div>
+    <ul class="menu-links">
+        <li>
+            <a href="#" class="menu-item active">
+                <i class="bi bi-columns-gap"></i>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="#" class="menu-item">
+                <i class="bi bi-box"></i>
+                Items
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="false"
+                (click)="subMenuToggleHandler($event)">
+                <i class="bi bi-sliders2-vertical"></i>
+                Settings
+            </a>
+            <ul class="sub-menu-item">
+                <li>
+                    <a href="#" class="menu-item">
+                        Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-item active">
+                        Users
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-item">
+                        Website
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="menu-item">
+                <i class="bi bi-box-arrow-right"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+</aside>
