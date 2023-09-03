@@ -5,17 +5,17 @@ import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { PublicModule } from './public/public.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PageNotFoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    PublicModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,7 +11,7 @@
     </div>
     <ul class="menu-links">
         <li>
-            <a href="#" class="menu-item active">
+            <a routerLink="/admin/dashboard" routerLinkActive="active" class="menu-item">
                 <i class="bi bi-columns-gap"></i>
                 Dashboard
             </a>
@@ -23,19 +23,19 @@
             </a>
         </li>
         <li>
-            <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="false"
+            <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="false" ariaCurrentWhenActive="page"
                 (click)="subMenuToggleHandler($event)">
                 <i class="bi bi-sliders2-vertical"></i>
                 Settings
             </a>
             <ul class="sub-menu-item">
                 <li>
-                    <a href="#" class="menu-item">
+                    <a class="menu-item" routerLink="/admin/settings/profile" routerLinkActive="active">
                         Profile
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="menu-item active">
+                    <a href="#" class="menu-item">
                         Users
                     </a>
                 </li>

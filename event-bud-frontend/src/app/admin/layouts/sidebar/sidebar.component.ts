@@ -1,4 +1,5 @@
-import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,12 +7,17 @@ import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
   
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   collapsed: boolean = false;
+
   @Output() sidebarCollapsed = new EventEmitter<boolean>();
 
-  constructor(private readonly elementRef: ElementRef) { }
+  constructor(private readonly elementRef: ElementRef, private router: Router) { }
   
+  ngOnInit(): void {
+    
+  }
+
   sidebarCollapsedHandler = () => {
     this.collapsed = !this.collapsed;
     this.sidebarCollapsed.emit(this.collapsed);

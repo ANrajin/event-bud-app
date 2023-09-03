@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PublicComponent } from './public.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
 @NgModule({
   declarations: [
-    PublicComponent
+    PublicComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule
