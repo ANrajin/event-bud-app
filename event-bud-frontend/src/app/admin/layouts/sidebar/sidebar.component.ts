@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { AppRoutes } from 'src/app/app.routes';
+import { AdminRoutes, SettingRoutes } from '../../admin.routes';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,13 +10,15 @@ import { Router } from '@angular/router';
   
 export class SidebarComponent implements OnInit {
   collapsed: boolean = false;
+  readonly appRoutes = AppRoutes;
+  readonly adminRoutes = AdminRoutes;
+  readonly settingRoutes = SettingRoutes;
 
   @Output() sidebarCollapsed = new EventEmitter<boolean>();
 
-  constructor(private readonly elementRef: ElementRef, private router: Router) { }
+  constructor(private readonly elementRef: ElementRef) { }
   
   ngOnInit(): void {
-    
   }
 
   sidebarCollapsedHandler = () => {
@@ -40,5 +43,10 @@ export class SidebarComponent implements OnInit {
       subMenu.setAttribute('aria-expanded', 'true');
     else
       subMenu.setAttribute('aria-expanded', 'false');
+  }
+
+  prepareRoute(...paths: string[])
+  {
+    return '/' + paths.filter(Boolean).join('/');
   }
 }
