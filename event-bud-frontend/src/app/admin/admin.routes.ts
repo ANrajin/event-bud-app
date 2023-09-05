@@ -4,5 +4,6 @@ export enum AdminRoutes{
 }
 
 export enum SettingRoutes{
-    Profile = 'profile'
+    Profile = 'profile',
+    Users = 'users',
 }

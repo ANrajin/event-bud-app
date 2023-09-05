@@ -36,7 +36,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="menu-item" ariaCurrentWhenActive="page">
+                    <a class="menu-item" [routerLink]="prepareRoute(appRoutes.Admin, adminRoutes.Settings, settingRoutes.Users)" 
+                        routerLinkActive="active" ariaCurrentWhenActive="page">
                         Users
                     </a>
                 </li>
