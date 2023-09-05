@@ -4,6 +4,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
+import { SigninComponent } from './public/signin/signin.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
     path: AppRoutes.Admin,
     component: AdminComponent,
     loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: AppRoutes.Signin,
+    component: SigninComponent
   },
   {
     path: '**',
