@@ -70,10 +70,9 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     this.routerSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const subMenu = this.elementRef.nativeElement.querySelectorAll(".sub-menu");
-        const elem = this.elementRef.nativeElement.querySelector('[aria-current="page"]')
-          .closest('ul.sub-menu-item') as Element;
+        const elem = this.elementRef.nativeElement.querySelector(`[href='${event.url}']`) as Element;
         
-        if (elem == null) return;
+        if (elem.closest('ul.sub-menu-item')) return;
 
         subMenu.forEach((subMenu: Element) => {
           if(subMenu.getAttribute('aria-expanded') == 'true')
