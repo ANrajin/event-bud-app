@@ -1,6 +1,7 @@
 export enum AdminRoutes{
     Dashboard = 'dashboard',
-    Settings = 'settings'
+    Events = 'events',
+    Settings = 'settings',
 }
 
 export enum SettingRoutes{

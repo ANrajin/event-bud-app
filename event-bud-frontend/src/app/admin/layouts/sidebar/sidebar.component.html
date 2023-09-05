@@ -18,9 +18,10 @@
             </a>
         </li>
         <li>
-            <a href="#" class="menu-item">
-                <i class="bi bi-box"></i>
-                Items
+            <a class="menu-item" [routerLink]="prepareRoute(appRoutes.Admin, adminRoutes.Events)" 
+                routerLinkActive="active" ariaCurrentWhenActive="page">
+                <i class="bi bi-calendar4-event"></i>
+                Events
             </a>
         </li>
         <li>

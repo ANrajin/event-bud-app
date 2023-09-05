@@ -8,13 +8,15 @@ import { AdminComponent } from './admin.component';
 import { AdminPageNotFoundComponent } from './views/admin-page-not-found/admin-page-not-found.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { SettingsModule } from './views/settings/settings.module';
+import { EventsComponent } from './views/events/events.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
     DashboardComponent,
-    AdminPageNotFoundComponent
+    AdminPageNotFoundComponent,
+    EventsComponent
   ],
   imports: [
     CommonModule,
