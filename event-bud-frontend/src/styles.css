@@ -17,7 +17,11 @@
 
     /* Button */
     .btn{
-        @apply px-5 py-2 rounded-md transition ease-in-out
+        @apply px-2 py-2 h-11 flex justify-center items-center rounded-md transition ease-in-out duration-300
+    }
+
+    .btn:disabled{
+        @apply bg-emerald-500
     }
 
     .btn-primary{
@@ -107,5 +111,19 @@
 
     .card-title{
         @apply text-gray-900 
+    }
+
+    /* Input */
+    input{
+        outline: none !important;
+        @apply transition-all duration-100 ease-in-out focus:ring-2 focus:ring-inset focus:ring-emerald-600
+    }
+
+    .form-group{
+        @apply flex flex-col gap-y-1 mb-3
+    }
+
+    .form-control{
+        @apply py-2 px-3 text-sm rounded-lg border border-gray-100
     }
 }
