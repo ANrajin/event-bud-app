@@ -1,3 +1,3 @@
 export class DatetimeHelper{
-    public static readonly currentYear = new Date().getFullYear();
+    public static readonly currentYear : number = new Date().getFullYear();
 }
