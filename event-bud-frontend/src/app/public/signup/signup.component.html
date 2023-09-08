@@ -1,4 +1,4 @@
-<div [@fadeInOut] class="min-h-screen bg-slate-200 flex justify-center items-center">
+<div [@pageTransition] class="min-h-screen bg-slate-200 flex justify-center items-center">
     <div class="card p-5 w-10/12 xl:w-1/2 grid grid-cols-1 md:grid-cols-2">
         <div class="relative flex flex-col p-1 md:p-8">
             <h2 class="text-lg xl:text-2xl pb-3">
@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <form class="my-5">
+            <form class="my-5" (submit)="onFormSubmitHandler($event)">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <div class="relative">
@@ -64,8 +64,8 @@
 
                 <div class="my-5"></div>
 
-                <button type="submit" class="btn w-full btn-primary">
-                    <app-spinner></app-spinner>
+                <button type="submit" class="btn w-full btn-primary" [disabled]="isLoading">
+                    <app-spinner *ngIf="isLoading"></app-spinner>
                     Sign up
                 </button>
             </form>

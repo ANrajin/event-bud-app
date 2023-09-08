@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { DatetimeHelper } from 'src/app/_core/helpers/datetime.helper';
 import { CommonService } from 'src/app/_core/services/common.service';
-import { fadeInOut } from 'src/app/shared/animations';
+import { pageTransition } from 'src/app/shared/animations';
 import { PublicRoutes } from '../public.routes';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css'],
-  animations: [fadeInOut]
+  animations: [pageTransition]
 })
 export class SigninComponent {
   isLoading: boolean = false;

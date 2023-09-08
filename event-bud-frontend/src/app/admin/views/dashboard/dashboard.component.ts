@@ -1,12 +1,14 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { pageTransition } from 'src/app/shared/animations';
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  animations: [pageTransition]
 })
 export class DashboardComponent implements OnInit{
   eventDate: any = formatDate(new Date(), 'MMM dd, yyyy', 'en');
