@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SigninComponent {
   isLoading: boolean = false;
+  readonly currentYear: number = new Date().getFullYear();
 
   onFormSubmitHandler = (event: SubmitEvent) => {
     event.preventDefault();

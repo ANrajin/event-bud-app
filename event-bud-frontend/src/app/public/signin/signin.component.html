@@ -40,14 +40,17 @@
 
                 <button type="submit" class="btn w-full btn-primary" [disabled]="isLoading">
                     <app-spinner *ngIf="isLoading"></app-spinner>
-                    Login
+                    Signin
                 </button>
             </form>
 
             <div class="my-5"></div>
 
             <div class="absolute left-0 right-0 bottom-0 text-center text-gray-500">
-                <p class="text-xs">All right reserved</p>
+                <p class="text-xs">All right reserved. 
+                    <a href="anrajin.github.io/me" class="text-emerald-600">anrajin</a>
+                    &copy;&nbsp;{{currentYear}}
+                </p>
             </div>
         </div>
         <div class="md:block hidden text-white bg-emerald-600 rounded-lg p-8 xl:p-12">
