@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CommonService } from 'src/app/_core/services/common.service';
 import { AppRoutes } from 'src/app/app.routes';
 import { AdminRoutes, SettingRoutes } from '../../admin.routes';
 
@@ -19,7 +20,10 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Output() sidebarCollapsed = new EventEmitter<boolean>();
 
-  constructor(private readonly elementRef: ElementRef, private router: Router) { }
+  constructor(
+    public readonly commonServices: CommonService,
+    private readonly elementRef: ElementRef,
+    private router: Router) { }
   
   ngOnInit(): void {
   }
@@ -80,10 +84,5 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       }
     })
-  }
-
-  prepareRoute(...paths: string[])
-  {
-    return '/' + paths.filter(Boolean).join('/');
   }
 }

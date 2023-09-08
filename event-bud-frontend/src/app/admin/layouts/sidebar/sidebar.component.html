@@ -11,14 +11,14 @@
     </div>
     <ul class="menu-links">
         <li>
-            <a [routerLink]="prepareRoute(appRoutes.Admin, adminRoutes.Dashboard)" routerLinkActive="active" class="menu-item"
+            <a [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Dashboard)" routerLinkActive="active" class="menu-item"
                 ariaCurrentWhenActive="page">
                 <i class="bi bi-columns-gap"></i>
                 Dashboard
             </a>
         </li>
         <li>
-            <a class="menu-item" [routerLink]="prepareRoute(appRoutes.Admin, adminRoutes.Events)" 
+            <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Events)" 
                 routerLinkActive="active" ariaCurrentWhenActive="page">
                 <i class="bi bi-calendar4-event"></i>
                 Events
@@ -31,13 +31,13 @@
             </a>
             <ul class="sub-menu-item">
                 <li>
-                    <a class="menu-item" [routerLink]="prepareRoute(appRoutes.Admin, adminRoutes.Settings, settingRoutes.Profile)" 
+                    <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Settings, settingRoutes.Profile)" 
                         routerLinkActive="active" ariaCurrentWhenActive="page">
                         Profile
                     </a>
                 </li>
                 <li>
-                    <a class="menu-item" [routerLink]="prepareRoute(appRoutes.Admin, adminRoutes.Settings, settingRoutes.Users)" 
+                    <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Settings, settingRoutes.Users)" 
                         routerLinkActive="active" ariaCurrentWhenActive="page">
                         Users
                     </a>
