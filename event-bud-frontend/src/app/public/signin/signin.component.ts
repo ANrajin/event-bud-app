@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatetimeHelper } from 'src/app/_core/helpers/datetime.helper';
 
 @Component({
   selector: 'app-signin',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class SigninComponent {
   isLoading: boolean = false;
-  readonly currentYear: number = new Date().getFullYear();
+  readonly currentYear: number = DatetimeHelper.currentYear;
 
   onFormSubmitHandler = (event: SubmitEvent) => {
     event.preventDefault();
