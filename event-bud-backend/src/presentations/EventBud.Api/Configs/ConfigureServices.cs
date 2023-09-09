@@ -1,4 +1,5 @@
 ﻿using EventBud.Application;
+using EventBud.Persistence;
 using Microsoft.OpenApi.Models;
 
 namespace EventBud.Api.Configs;
@@ -7,8 +8,9 @@ public static class ConfigureServices
 {
     public static WebApplicationBuilder AddServices(this WebApplicationBuilder builder)
     {
-        builder.Services.ConfigureApplicationServices();
-
+        builder.Services.AddApplicationServices();
+        builder.Services.AddPersistenceServices(builder.Configuration);
+        
         builder.Services.AddControllers(config => { config.ReturnHttpNotAcceptable = true; });
 
         builder.Services.AddEndpointsApiExplorer();
