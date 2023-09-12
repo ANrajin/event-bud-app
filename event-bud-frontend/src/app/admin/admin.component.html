@@ -2,6 +2,7 @@
   <app-sidebar class="sidebar" (sidebarCollapsed)="onSidebarCollapsed($event)" [ngClass]="collapsed ? 'sidebar-collapsed' : ''"></app-sidebar>
 
   <div class="flex-1">
+    <app-header></app-header>
     <main class="min-h-screen p-4">
       <router-outlet></router-outlet>
     </main>
