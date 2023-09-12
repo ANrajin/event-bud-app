@@ -10,6 +10,11 @@
         -webkit-font-smoothing: antialiased;
     }
 
+    /* Text color */
+    .text-light{
+        @apply text-slate-400
+    }
+
     /* Text size */
     .text-2xs{
         font-size: 0.5rem !important;
