@@ -22,7 +22,7 @@ import { AdminRoutes, SettingRoutes } from '../../admin.routes';
 })
   
 export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
-  sidebarExpanded: boolean = true;
+  sidebarIsCollapsed: boolean = true;
   readonly appRoutes = AppRoutes;
   readonly adminRoutes = AdminRoutes;
   readonly settingRoutes = SettingRoutes;
@@ -48,8 +48,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   sidebarCollapsedHandler = () : void => {
-    this.sidebarExpanded = !this.sidebarExpanded;
-    this.sidebarCollapsed.emit(this.sidebarExpanded);
+    this.sidebarIsCollapsed = !this.sidebarIsCollapsed;
+    this.sidebarCollapsed.emit(this.sidebarIsCollapsed);
     
     const subMenu = this.elementRef.nativeElement.querySelectorAll(".sub-menu");
 
