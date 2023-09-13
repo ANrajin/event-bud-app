@@ -1,8 +1,0 @@
-/* Sidebar */
-.sidebar {
-    @apply w-60 sticky top-0 px-3 bg-slate-900 min-h-screen pt-5 transition-all duration-300
-}
-
-.sidebar-collapsed {
-    @apply w-14 overflow-hidden
-}
