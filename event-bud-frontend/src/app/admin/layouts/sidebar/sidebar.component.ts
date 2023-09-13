@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/_core/services/common.service';
@@ -8,11 +17,12 @@ import { AdminRoutes, SettingRoutes } from '../../admin.routes';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
   
 export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
-  collapsed: boolean = false;
+  sidebarExpanded: boolean = true;
   readonly appRoutes = AppRoutes;
   readonly adminRoutes = AdminRoutes;
   readonly settingRoutes = SettingRoutes;
@@ -38,8 +48,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   sidebarCollapsedHandler = () : void => {
-    this.collapsed = !this.collapsed;
-    this.sidebarCollapsed.emit(this.collapsed);
+    this.sidebarExpanded = !this.sidebarExpanded;
+    this.sidebarCollapsed.emit(this.sidebarExpanded);
     
     const subMenu = this.elementRef.nativeElement.querySelectorAll(".sub-menu");
 

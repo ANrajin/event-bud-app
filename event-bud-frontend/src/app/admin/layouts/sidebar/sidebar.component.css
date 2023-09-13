@@ -1,5 +1,30 @@
+/* Sidebar */
+.sidebar {
+    @apply sticky top-0 px-3 bg-slate-900 min-h-screen pt-5 transition-all duration-300
+}
+
+.sidebar[aria-expanded=true] {
+    @apply w-60
+}
+
+.sidebar[aria-expanded=false] {
+    @apply w-14 overflow-hidden
+}
+
+.brand-wrapper{
+    @apply flex items-center min-h-[2rem] justify-between
+}
+
 .brand {
     @apply flex items-center gap-x-2 transition-all duration-300
+}
+
+app-sidebar[aria-expanded="false"] .brand-wrapper {
+    @apply justify-evenly
+}
+
+app-sidebar[aria-expanded="false"] .brand {
+    @apply scale-0 w-0
 }
 
 /* Sidebar Dropdown */

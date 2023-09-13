@@ -1,12 +1,12 @@
 <aside>
-    <div class="flex items-center min-h-[2rem]" [ngClass]="collapsed ? 'justify-evenly' : 'justify-between'">
-        <a href="#" class="brand" [ngClass]="collapsed ? 'scale-0 w-0' : ''">
+    <div class="brand-wrapper">
+        <a href="#" class="brand">
             <img src="../assets/my-logo.png" alt="event bud" class="w-5">
             <h1 class="text-xl font-bold text-slate-300">EVENTBUD</h1>
         </a>
         <button type="button" class="bg-slate-700 px-1 rounded hover:text-emerald-600 transition ease-in-out"
             (click)="sidebarCollapsedHandler()">
-            <i class="bi" [ngClass]="collapsed ? 'bi-arrow-right-short' : 'bi-arrow-left-short'"></i>
+            <i class="bi" [ngClass]="sidebarExpanded ? 'bi-arrow-left-short' : 'bi-arrow-right-short'"></i>
         </button>
     </div>
     <ul class="menu-links">
