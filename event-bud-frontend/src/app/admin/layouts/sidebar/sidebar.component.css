@@ -27,13 +27,21 @@ app-sidebar[aria-expanded="false"] .brand {
     @apply scale-0 w-0
 }
 
-/* Sidebar Dropdown */
+/* Sidebar Links */
 .menu-links {
     @apply flex flex-col gap-y-3 pt-5 font-medium;
 }
 
 .menu-item {
     @apply inline-flex w-full gap-x-2 items-center px-2 py-1 text-gray-500 transition duration-300 ease-in-out rounded overflow-hidden
+}
+
+.menu-item span{
+    @apply text-sm
+}
+
+.sidebar[aria-expanded=false] .menu-links .menu-item span{
+    @apply hidden
 }
 
 .menu-item.active {

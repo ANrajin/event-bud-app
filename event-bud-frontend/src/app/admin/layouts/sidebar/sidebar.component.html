@@ -14,44 +14,44 @@
             <a [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Dashboard)" routerLinkActive="active" class="menu-item"
                 ariaCurrentWhenActive="page">
                 <i class="bi bi-columns-gap"></i>
-                Dashboard
+                <span>Dashboard</span>
             </a>
         </li>
         <li>
             <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Events)" 
                 routerLinkActive="active" ariaCurrentWhenActive="page">
                 <i class="bi bi-calendar4-event"></i>
-                Events
+                <span>Events</span>
             </a>
         </li>
         <li>
             <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Elements)" 
                 routerLinkActive="active" ariaCurrentWhenActive="page">
                 <i class="bi bi-diagram-3"></i>
-                UI Elements
+                <span>UI Elements</span>
             </a>
         </li>
         <li>
             <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="false" (click)="subMenuToggleHandler($event)">
                 <i class="bi bi-sliders2-vertical"></i>
-                Settings
+                <span>Settings</span>
             </a>
             <ul class="sub-menu-item">
                 <li>
                     <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Settings, settingRoutes.Profile)" 
                         routerLinkActive="active" ariaCurrentWhenActive="page">
-                        Profile
+                        <span>Profile</span>
                     </a>
                 </li>
                 <li>
                     <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Settings, settingRoutes.Users)" 
                         routerLinkActive="active" ariaCurrentWhenActive="page">
-                        Users
+                        <span>Users</span>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="menu-item" ariaCurrentWhenActive="page">
-                        Website
+                        <span>Website</span>
                     </a>
                 </li>
             </ul>
@@ -59,7 +59,7 @@
         <li>
             <a href="#" class="menu-item">
                 <i class="bi bi-box-arrow-right"></i>
-                Logout
+                <span>Logout</span>
             </a>
         </li>
     </ul>
