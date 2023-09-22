@@ -22,9 +22,9 @@ public static class ConfigureServices
 
     private static void AddSwagger(WebApplicationBuilder builder)
     {
-        builder.Services.AddSwaggerGen(option =>
+        builder.Services.AddSwaggerGen(options =>
         {
-            option.SwaggerDoc("event-bud-api-v1", new OpenApiInfo
+            options.SwaggerDoc("event-bud-api-v1", new OpenApiInfo
             {
                 Title = "Event Management Application API",
                 Version = "1",

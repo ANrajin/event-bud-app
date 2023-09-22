@@ -2,4 +2,6 @@
 
 namespace EventBud.Application.Features.Categories.Commands.CreateCategory;
 
-public sealed record CreateCategoryCommand : IRequest<CreateCategoryCommandResponse>;
+public sealed record CreateCategoryCommand(
+    string Title, 
+    string Description) : IRequest;
