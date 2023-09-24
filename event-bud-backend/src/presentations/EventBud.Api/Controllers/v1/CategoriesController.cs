@@ -1,4 +1,5 @@
 ﻿using EventBud.Application.Features.Categories.Commands.CreateCategory;
+using EventBud.Application.Features.Categories.Queries.GetCategories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,15 @@ public class CategoriesController : ApiBaseController
         _mediator = mediator;
     }
 
-    [HttpPost("Create")]
+    [HttpGet]
+    public async Task<IActionResult> Get(CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send
+            (new GetCategoriesQuery(cancellationToken), cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpPost]
     public async Task<IActionResult> Post(
         [FromBody] CreateCategoryCommand command, CancellationToken cancellationToken)
     {
