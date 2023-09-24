@@ -15,10 +15,27 @@ public class CategoryRepository : ICategoryRepository
         _dbContext = dbContext;
     }
 
-    public async Task<IReadOnlyList<CategoryDto>> GetAll(CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<CategoryDto>> GetAllAsync(CancellationToken cancellationToken)
     {
-        return await _dbContext.Categories.Select(s => new CategoryDto(s.Id, s.Title, s.Description))
+        return await _dbContext.Categories.Select(s => new CategoryDto
+            {
+                Id = s.Id,
+                Title = s.Title,
+                Description = s.Description
+            })
             .ToListAsync(cancellationToken);
+    }
+
+    public async Task<CategoryDto?> GetByIdAsync(Guid requestId, CancellationToken cancellationToken)
+    {
+        return await _dbContext.Categories
+            .Select(s => new CategoryDto
+            {
+                Id = s.Id,
+                Title = s.Title,
+                Description = s.Description
+            })
+            .SingleOrDefaultAsync(x => x.Id.Equals(requestId), cancellationToken: cancellationToken);
     }
 
     public async Task CreateAsync(Category category, CancellationToken cancellationToken)

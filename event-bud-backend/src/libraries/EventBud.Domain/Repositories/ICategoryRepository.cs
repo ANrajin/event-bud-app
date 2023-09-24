@@ -5,7 +5,9 @@ namespace EventBud.Domain.Repositories;
 
 public interface ICategoryRepository
 {
-    Task<IReadOnlyList<CategoryDto>> GetAll(CancellationToken cancellationToken);
+    Task<IReadOnlyList<CategoryDto>> GetAllAsync(CancellationToken cancellationToken);
+    
+    Task<CategoryDto?> GetByIdAsync(Guid requestId, CancellationToken cancellationToken);
     
     Task CreateAsync(Category category, CancellationToken cancellationToken);
 }

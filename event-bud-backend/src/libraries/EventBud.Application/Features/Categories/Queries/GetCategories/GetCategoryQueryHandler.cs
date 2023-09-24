@@ -15,7 +15,7 @@ public sealed class GetCategoryQueryHandler : IRequestHandler<GetCategoriesQuery
 
     public async Task<IReadOnlyList<CategoryDto>> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
     {
-        var result = await _unitOfWork.CategoryRepository.GetAll(cancellationToken);
+        var result = await _unitOfWork.CategoryRepository.GetAllAsync(cancellationToken);
 
         return result;
     }

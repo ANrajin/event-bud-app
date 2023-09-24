@@ -1,5 +1,7 @@
 ﻿using EventBud.Application.Features.Categories.Commands.CreateCategory;
 using EventBud.Application.Features.Categories.Queries.GetCategories;
+using EventBud.Application.Features.Categories.Queries.GetCategory;
+using EventBud.Domain.Dtos.Category;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +21,14 @@ public class CategoriesController : ApiBaseController
     public async Task<IActionResult> Get(CancellationToken cancellationToken)
     {
         var result = await _mediator.Send
-            (new GetCategoriesQuery(cancellationToken), cancellationToken);
+            (new GetCategoriesQuery(), cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new GetCategoryQuery(id), cancellationToken);
         return Ok(result);
     }
 

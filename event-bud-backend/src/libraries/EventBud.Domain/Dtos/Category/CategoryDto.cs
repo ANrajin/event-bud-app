@@ -1,3 +1,10 @@
 ﻿namespace EventBud.Domain.Dtos.Category;
 
-public sealed record CategoryDto(Guid Id, string Title, string Description);
+public sealed class CategoryDto
+{
+    public Guid Id { get; set; }
+
+    public string Title { get; set; } = string.Empty;
+
+    public string Description { get; set; } = string.Empty;
+}
