@@ -1,4 +1,6 @@
 ﻿using EventBud.Application.Features.Categories.Commands.CreateCategory;
+using EventBud.Application.Features.Categories.Commands.DeleteCategory;
+using EventBud.Application.Features.Categories.Commands.UpdateCategory;
 using EventBud.Application.Features.Categories.Queries.GetCategories;
 using EventBud.Application.Features.Categories.Queries.GetCategory;
 using EventBud.Domain.Dtos.Category;
@@ -37,6 +39,22 @@ public class CategoriesController : ApiBaseController
         [FromBody] CreateCategoryCommand command, CancellationToken cancellationToken)
     {
         await _mediator.Send(command, cancellationToken);
+        return Ok();
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Put(
+        [FromBody] UpdateCategoryCommand command, CancellationToken cancellationToken)
+    {
+        await _mediator.Send(command, cancellationToken);
+        return Ok();
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
+    {
+        await _mediator.Send(new CategoryDeleteCommand(id), cancellationToken);
+
         return Ok();
     }
 }

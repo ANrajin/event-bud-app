@@ -16,4 +16,10 @@ public sealed class Category : BaseEntity
             Description = description,
         };
     }
+
+    public void Update(string title, string description)
+    {
+        Title = title;
+        Description = description;
+    }
 }

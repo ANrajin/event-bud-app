@@ -1,4 +1,5 @@
 ﻿using EventBud.Application.Contracts.Persistence;
+using EventBud.Application.Exceptions;
 using EventBud.Domain.Dtos.Category;
 using EventBud.Domain.Entities;
 using EventBud.Domain.Repositories;
@@ -17,7 +18,8 @@ public class CategoryRepository : ICategoryRepository
 
     public async Task<IReadOnlyList<CategoryDto>> GetAllAsync(CancellationToken cancellationToken)
     {
-        return await _dbContext.Categories.Select(s => new CategoryDto
+        return await _dbContext.Categories.AsNoTracking()
+            .Select(s => new CategoryDto
             {
                 Id = s.Id,
                 Title = s.Title,
@@ -28,7 +30,7 @@ public class CategoryRepository : ICategoryRepository
 
     public async Task<CategoryDto?> GetByIdAsync(Guid requestId, CancellationToken cancellationToken)
     {
-        return await _dbContext.Categories
+        return await _dbContext.Categories.AsNoTracking()
             .Select(s => new CategoryDto
             {
                 Id = s.Id,
@@ -41,5 +43,22 @@ public class CategoryRepository : ICategoryRepository
     public async Task CreateAsync(Category category, CancellationToken cancellationToken)
     {
         await _dbContext.Categories.AddAsync(category, cancellationToken);
+    }
+
+    public async Task UpdateAsync(Guid requestId, Category category, CancellationToken cancellationToken)
+    {
+        var categoryEntity = await _dbContext.Categories.FindAsync(new object?[] { requestId }, 
+            cancellationToken: cancellationToken);
+        categoryEntity?.Update(category.Title, category.Description);
+    }
+
+    public async Task DeleteAsync(Guid requestId, CancellationToken cancellationToken)
+    {
+        var categoryEntity = await _dbContext.Categories
+            .FindAsync(new object?[] { requestId }, cancellationToken: cancellationToken);
+
+        if (categoryEntity is null) throw new ResourceNotFoundException("The requested resource not found!");
+
+        _dbContext.Categories.Remove(categoryEntity);
     }
 }

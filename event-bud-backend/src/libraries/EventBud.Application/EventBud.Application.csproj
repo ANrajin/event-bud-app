@@ -15,6 +15,9 @@
     <ItemGroup>
       <ProjectReference Include="..\EventBud.Domain\EventBud.Domain.csproj" />
 
+
+
+
     </ItemGroup>
 
 

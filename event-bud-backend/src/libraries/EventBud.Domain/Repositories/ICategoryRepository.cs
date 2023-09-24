@@ -10,4 +10,8 @@ public interface ICategoryRepository
     Task<CategoryDto?> GetByIdAsync(Guid requestId, CancellationToken cancellationToken);
     
     Task CreateAsync(Category category, CancellationToken cancellationToken);
+    
+    Task UpdateAsync(Guid requestId, Category category, CancellationToken cancellationToken);
+    
+    Task DeleteAsync(Guid requestId, CancellationToken cancellationToken);
 }
