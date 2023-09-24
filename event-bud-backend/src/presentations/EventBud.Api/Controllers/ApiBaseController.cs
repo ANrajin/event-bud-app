@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EventBud.Api.Controllers;
 
@@ -7,4 +8,10 @@ namespace EventBud.Api.Controllers;
 [Consumes("application/json")]
 public class ApiBaseController : Controller
 {
+    protected readonly ISender Sender;
+
+    public ApiBaseController(ISender sender)
+    {
+        Sender = sender;
+    }
 }
