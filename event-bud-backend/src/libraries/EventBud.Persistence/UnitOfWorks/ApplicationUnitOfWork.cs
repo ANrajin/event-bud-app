@@ -1,5 +1,5 @@
-﻿using EventBud.Application.Contracts.Persistence;
-using EventBud.Domain.Repositories;
+﻿using EventBud.Application.Contracts;
+using EventBud.Application.Contracts.Repositories;
 
 namespace EventBud.Persistence.UnitOfWorks;
 

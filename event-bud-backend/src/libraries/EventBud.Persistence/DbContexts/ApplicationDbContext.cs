@@ -1,8 +1,8 @@
-﻿using EventBud.Application.Contracts.Persistence;
-using EventBud.Domain.Entities;
+﻿using EventBud.Application.Contracts;
+using EventBud.Domain.Category;
 using Microsoft.EntityFrameworkCore;
 
-namespace EventBud.Persistence.DbContexts;
+namespace EventBud.Persistence.DBContexts;
 
 public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
@@ -15,7 +15,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         //Set Table Name as Application.TableName
         modelBuilder.HasDefaultSchema("Application");
-        
+            
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
     
@@ -25,4 +25,5 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     }
 
     public DbSet<Category> Categories => Set<Category>();
+
 }

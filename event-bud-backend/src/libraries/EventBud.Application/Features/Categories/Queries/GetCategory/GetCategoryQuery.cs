@@ -1,4 +1,4 @@
-﻿using EventBud.Domain.Dtos.Category;
+﻿using EventBud.Application.Features.Categories.Dtos;
 using MediatR;
 
 namespace EventBud.Application.Features.Categories.Queries.GetCategory;

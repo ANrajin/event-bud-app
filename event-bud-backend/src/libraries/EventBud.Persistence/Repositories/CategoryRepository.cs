@@ -1,8 +1,8 @@
-﻿using EventBud.Application.Contracts.Persistence;
+﻿using EventBud.Application.Contracts;
+using EventBud.Application.Contracts.Repositories;
 using EventBud.Application.Exceptions;
-using EventBud.Domain.Dtos.Category;
-using EventBud.Domain.Entities;
-using EventBud.Domain.Repositories;
+using EventBud.Application.Features.Categories.Dtos;
+using EventBud.Domain.Category;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventBud.Persistence.Repositories;

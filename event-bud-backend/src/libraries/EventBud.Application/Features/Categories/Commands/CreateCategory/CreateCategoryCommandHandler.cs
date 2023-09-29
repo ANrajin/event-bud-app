@@ -1,5 +1,5 @@
-﻿using EventBud.Application.Contracts.Persistence;
-using EventBud.Domain.Entities;
+﻿using EventBud.Application.Contracts;
+using EventBud.Domain.Category;
 using MediatR;
 
 namespace EventBud.Application.Features.Categories.Commands.CreateCategory;

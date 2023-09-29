@@ -1,6 +1,6 @@
-﻿using EventBud.Application.Contracts.Persistence;
-using EventBud.Domain.Repositories;
-using EventBud.Persistence.DbContexts;
+﻿using EventBud.Application.Contracts;
+using EventBud.Application.Contracts.Repositories;
+using EventBud.Persistence.DBContexts;
 using EventBud.Persistence.Repositories;
 using EventBud.Persistence.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;

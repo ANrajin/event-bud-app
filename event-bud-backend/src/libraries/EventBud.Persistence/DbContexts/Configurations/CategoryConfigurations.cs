@@ -1,10 +1,10 @@
-﻿using EventBud.Domain.Entities;
+﻿using EventBud.Domain.Category;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EventBud.Persistence.DbContexts.Configurations;
+namespace EventBud.Persistence.DBContexts.Configurations;
 
-public class CategoryConfigurations : IEntityTypeConfiguration<Category>
+public sealed class CategoryConfigurations : IEntityTypeConfiguration<Category>
 {
     public void Configure(EntityTypeBuilder<Category> builder)
     {
