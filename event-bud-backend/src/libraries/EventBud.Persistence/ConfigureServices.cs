@@ -14,12 +14,15 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        
         services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), 
+            options.UseSqlServer(connectionString, 
                 builder => builder.MigrationsHistoryTable(
                     HistoryRepository.DefaultTableName, "Application")));
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+        services.AddScoped<ApplicationDbContextInitiator>();
         services.AddScoped<IUnitOfWork, ApplicationUnitOfWork>();
         
         #region Register Repositories

@@ -16,7 +16,7 @@ public static class ConfigureServices
         builder.Services.AddEndpointsApiExplorer();
 
         AddSwagger(builder);
-
+        
         return builder;
     }
 
