@@ -13,4 +13,22 @@ public sealed class EventLocation
     public string Zip { get; } = string.Empty;
 
     public string Country { get; } = string.Empty;
+    
+    public EventLocation() { }
+
+    public EventLocation(
+        string location, 
+        string street, 
+        string city, 
+        string state, 
+        string zip, 
+        string country)
+    {
+        Location = location;
+        Street = street;
+        City = city;
+        State = state;
+        Country = country;
+        Zip = zip;
+    }
 }
