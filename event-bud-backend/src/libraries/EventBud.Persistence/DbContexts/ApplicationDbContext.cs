@@ -28,7 +28,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     public DbSet<Category> Categories => Set<Category>();
 
-    public DbSet<Event> Events => Set<Event>();
+    public DbSet<MyEvent> Events => Set<MyEvent>();
 
     public DbSet<EventDate> EventDates => Set<EventDate>();
 

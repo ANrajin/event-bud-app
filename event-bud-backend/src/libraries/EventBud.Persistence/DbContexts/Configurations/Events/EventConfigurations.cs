@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EventBud.Persistence.DBContexts.Configurations.Events;
 
-public sealed class EventConfigurations : IEntityTypeConfiguration<Event>
+public sealed class EventConfigurations : IEntityTypeConfiguration<MyEvent>
 {
-    public void Configure(EntityTypeBuilder<Event> builder)
+    public void Configure(EntityTypeBuilder<MyEvent> builder)
     {
         builder.HasKey(x => x.Id);
 
