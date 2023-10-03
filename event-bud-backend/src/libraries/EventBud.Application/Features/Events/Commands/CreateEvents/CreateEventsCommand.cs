@@ -1,4 +1,5 @@
-﻿using EventBud.Domain.Event.ValueObjects;
+﻿using EventBud.Application.Features.Events.Dtos;
+using EventBud.Domain.Event.ValueObjects;
 using MediatR;
 
 namespace EventBud.Application.Features.Events.Commands.CreateEvents;
@@ -26,6 +27,10 @@ public sealed record CreateEventsCommand : IRequest
     public uint Capacity { get; set; }
     
     public required string Image { get; set; }
+
+    public required List<EventDateDto> EventDates { get; set; }
+
+    public required List<TicketDto> Tickets { get; set; }
 
     public EventLocation ToEventLocation() => new EventLocation( Location, Street, City, State, Zip, Country);
 }
