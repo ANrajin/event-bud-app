@@ -1,4 +1,5 @@
 ﻿using EventBud.Application.Contracts;
+using EventBud.Application.Exceptions;
 using EventBud.Domain.Event.Aggregate;
 using EventBud.Domain.Event.Entities;
 using MediatR;
@@ -17,6 +18,14 @@ public class CreateEventsCommandHandler : IRequestHandler<CreateEventsCommand>
     
     public async Task Handle(CreateEventsCommand request, CancellationToken cancellationToken)
     {
+        var validator = new CreateEventsCommandValidator();
+        var validate = await validator.ValidateAsync(request, cancellationToken);
+
+        if (validate.Errors.Count > 0)
+        {
+            throw new ValidationException(validate);
+        }
+        
         var events = MyEvent.Create(
             request.Title,
             request.Description,

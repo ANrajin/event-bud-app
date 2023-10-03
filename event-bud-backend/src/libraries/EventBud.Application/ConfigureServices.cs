@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EventBud.Application;
@@ -12,6 +13,8 @@ public static class ConfigureServices
             config.Lifetime = ServiceLifetime.Scoped;
             config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
         });
+
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         
         return services;
     }
