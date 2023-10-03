@@ -10,16 +10,16 @@ public class ApplicationUnitOfWork : IUnitOfWork
     public ApplicationUnitOfWork(
         IApplicationDbContext dbContext, 
         ICategoryRepository categoryRepository, 
-        IEventRepository eventRepository)
+        IMyEventRepository myEventRepository)
     {
         _dbContext = dbContext;
         CategoryRepository = categoryRepository;
-        EventRepository = eventRepository;
+        MyEventRepository = myEventRepository;
     }
     
     public ICategoryRepository CategoryRepository { get; }
     
-    public IEventRepository EventRepository { get; }
+    public IMyEventRepository MyEventRepository { get; }
 
     public async Task SaveAsync(CancellationToken cancellationToken) => 
         await _dbContext.SaveChangesAsync(cancellationToken);

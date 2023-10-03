@@ -1,4 +1,5 @@
 ﻿using EventBud.Domain._Commons;
+using EventBud.Domain.Event.Aggregate;
 using EventBud.Domain.Event.Enums;
 
 namespace EventBud.Domain.Event.Entities;
@@ -17,7 +18,7 @@ public sealed class Ticket : Entity
 
     public Guid EventId { get; } = default;
     
-    public Aggregate.Event Event { get; } = new();
+    public MyEvent Event { get; } = new();
 
     public static Ticket Create(
         string name,

@@ -27,7 +27,7 @@ public static class ConfigureServices
         
         #region Register Repositories
         services.AddScoped<ICategoryRepository, CategoryRepository>();
-        services.AddScoped<IEventRepository, EventRepository>();
+        services.AddScoped<IMyEventRepository, MyEventRepository>();
         #endregion
         
         return services;

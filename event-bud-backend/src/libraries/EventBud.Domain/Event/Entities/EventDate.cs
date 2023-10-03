@@ -1,4 +1,5 @@
 ﻿using EventBud.Domain._Commons;
+using EventBud.Domain.Event.Aggregate;
 
 namespace EventBud.Domain.Event.Entities;
 
@@ -10,7 +11,7 @@ public sealed class EventDate : Entity
     
     public Guid EventId { get; } = default;
     
-    public Aggregate.Event Event { get; } = new();
+    public MyEvent Event { get; } = new();
 
     public static EventDate Create(DateOnly date, TimeOnly time)
     {

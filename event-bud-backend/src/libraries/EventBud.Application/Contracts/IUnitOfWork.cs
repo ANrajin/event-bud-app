@@ -6,7 +6,7 @@ public interface IUnitOfWork
 {
     ICategoryRepository CategoryRepository { get; }
     
-    IEventRepository EventRepository { get; }
+    IMyEventRepository MyEventRepository { get; }
 
     Task SaveAsync(CancellationToken cancellationToken);
 }

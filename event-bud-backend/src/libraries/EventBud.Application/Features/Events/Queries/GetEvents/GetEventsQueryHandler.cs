@@ -15,7 +15,7 @@ public class GetEventsQueryHandler : IRequestHandler<GetEventsQuery, IReadOnlyLi
     public async Task<IReadOnlyList<EventDto>> Handle(GetEventsQuery request, 
         CancellationToken cancellationToken)
     {
-        var result = await _unitOfWork.EventRepository.GetAllAsync(cancellationToken);
+        var result = await _unitOfWork.MyEventRepository.GetAllAsync(cancellationToken);
 
         return result;
     }

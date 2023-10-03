@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventBud.Persistence.Repositories;
 
-public sealed class EventRepository : IEventRepository
+public sealed class MyEventRepository : IMyEventRepository
 {
     private readonly IApplicationDbContext _dbContext;
 
-    public EventRepository(IApplicationDbContext dbContext)
+    public MyEventRepository(IApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
     }
@@ -35,12 +35,12 @@ public sealed class EventRepository : IEventRepository
         throw new NotImplementedException();
     }
 
-    public async Task CreatAsync(Event events, CancellationToken cancellationToken)
+    public async Task CreatAsync(MyEvent events, CancellationToken cancellationToken)
     {
         await _dbContext.Events.AddAsync(events, cancellationToken);
     }
 
-    public Task Update(Guid id, Event events, CancellationToken cancellationToken)
+    public Task Update(Guid id, MyEvent events, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

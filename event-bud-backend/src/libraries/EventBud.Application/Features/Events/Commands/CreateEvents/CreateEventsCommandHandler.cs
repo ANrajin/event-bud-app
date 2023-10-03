@@ -1,8 +1,7 @@
-﻿using MediatR;
-using EventBud.Application.Contracts;
+﻿using EventBud.Application.Contracts;
 using EventBud.Domain.Event.Aggregate;
 using EventBud.Domain.Event.Entities;
-using EventBud.Domain.Event.ValueObjects;
+using MediatR;
 
 namespace EventBud.Application.Features.Events.Commands.CreateEvents;
 
@@ -18,7 +17,7 @@ public class CreateEventsCommandHandler : IRequestHandler<CreateEventsCommand>
     
     public async Task Handle(CreateEventsCommand request, CancellationToken cancellationToken)
     {
-        var events = Event.Create(
+        var events = MyEvent.Create(
             request.Title,
             request.Description,
             request.EventType,
@@ -28,7 +27,7 @@ public class CreateEventsCommandHandler : IRequestHandler<CreateEventsCommand>
             request.Capacity,
             request.Image);
 
-        await _unitOfWork.EventRepository.CreatAsync(events, cancellationToken);
+        await _unitOfWork.MyEventRepository.CreatAsync(events, cancellationToken);
         await _unitOfWork.SaveAsync(cancellationToken);
     }
 }

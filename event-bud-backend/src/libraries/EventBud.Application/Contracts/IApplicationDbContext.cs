@@ -9,7 +9,7 @@ public interface IApplicationDbContext : IDisposable, IAsyncDisposable
 {
     DbSet<Category> Categories { get; }
     
-    DbSet<Event> Events { get; }
+    DbSet<MyEvent> Events { get; }
     
     DbSet<EventDate> EventDates { get; }
     

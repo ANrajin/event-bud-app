@@ -4,7 +4,7 @@ using EventBud.Domain.Event.ValueObjects;
 
 namespace EventBud.Domain.Event.Aggregate;
 
-public sealed class Event : Entity
+public sealed class MyEvent : Entity
 {
     public string Title { get; private set; } = string.Empty;
 
@@ -22,7 +22,7 @@ public sealed class Event : Entity
     
     public string Image { get; private set; } = string.Empty;
 
-    public static Event Create(
+    public static MyEvent Create(
         string title, 
         string description,
         EventType type,
@@ -32,7 +32,7 @@ public sealed class Event : Entity
         uint capacity,
         string image)
     {
-        return new Event
+        return new MyEvent
         {
             Title = title,
             Description = description,
@@ -45,7 +45,7 @@ public sealed class Event : Entity
         };
     }
 
-    public static Event Update(
+    public static MyEvent Update(
         Guid id,
         string title, 
         string description,
@@ -56,7 +56,7 @@ public sealed class Event : Entity
         uint capacity,
         string image)
     {
-        return new Event
+        return new MyEvent
         {
             Id = id,
             Title = title,
