@@ -15,10 +15,10 @@ public sealed class MyEventRepository : IMyEventRepository
         _dbContext = dbContext;
     }
     
-    public async Task<IReadOnlyList<EventDto>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<MyEventDto>> GetAllAsync(CancellationToken cancellationToken)
     {
         return await _dbContext.Events.AsNoTracking()
-            .Select(s => new EventDto
+            .Select(s => new MyEventDto
             {
                 Id = s.Id,
                 Title = s.Title,
@@ -30,7 +30,7 @@ public sealed class MyEventRepository : IMyEventRepository
             }).ToListAsync(cancellationToken);
     }
 
-    public Task<EventDto?> GetByIdAsync(Guid requestId, CancellationToken cancellationToken)
+    public Task<MyEventDto?> GetByIdAsync(Guid requestId, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

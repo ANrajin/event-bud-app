@@ -5,9 +5,9 @@ namespace EventBud.Application.Contracts.Repositories;
 
 public interface IMyEventRepository
 {
-    Task<IReadOnlyList<EventDto>> GetAllAsync(CancellationToken cancellationToken);
+    Task<IReadOnlyList<MyEventDto>> GetAllAsync(CancellationToken cancellationToken);
     
-    Task<EventDto?> GetByIdAsync(Guid requestId, CancellationToken cancellationToken);
+    Task<MyEventDto?> GetByIdAsync(Guid requestId, CancellationToken cancellationToken);
     
     Task CreatAsync(MyEvent events, CancellationToken cancellationToken);
 

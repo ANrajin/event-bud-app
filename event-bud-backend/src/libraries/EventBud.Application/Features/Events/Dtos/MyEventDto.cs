@@ -2,7 +2,7 @@
 
 namespace EventBud.Application.Features.Events.Dtos;
 
-public class EventDto
+public class MyEventDto
 {
     public Guid Id { get; set; }
 

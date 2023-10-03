@@ -4,7 +4,7 @@ using MediatR;
 
 namespace EventBud.Application.Features.Events.Queries.GetEvents;
 
-public class GetEventsQueryHandler : IRequestHandler<GetEventsQuery, IReadOnlyList<EventDto>>
+public class GetEventsQueryHandler : IRequestHandler<GetEventsQuery, IReadOnlyList<MyEventDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
     
@@ -12,7 +12,7 @@ public class GetEventsQueryHandler : IRequestHandler<GetEventsQuery, IReadOnlyLi
     {
         _unitOfWork = unitOfWork;
     }
-    public async Task<IReadOnlyList<EventDto>> Handle(GetEventsQuery request, 
+    public async Task<IReadOnlyList<MyEventDto>> Handle(GetEventsQuery request, 
         CancellationToken cancellationToken)
     {
         var result = await _unitOfWork.MyEventRepository.GetAllAsync(cancellationToken);
