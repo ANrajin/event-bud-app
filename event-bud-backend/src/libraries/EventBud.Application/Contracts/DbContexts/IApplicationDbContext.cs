@@ -3,7 +3,7 @@ using EventBud.Domain.Event.Aggregate;
 using EventBud.Domain.Event.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace EventBud.Application.Contracts;
+namespace EventBud.Application.Contracts.DbContexts;
 
 public interface IApplicationDbContext : IDisposable, IAsyncDisposable
 {

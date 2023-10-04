@@ -1,4 +1,5 @@
 ﻿using EventBud.Application.Contracts;
+using EventBud.Application.Contracts.DbContexts;
 using EventBud.Application.Contracts.Repositories;
 using EventBud.Application.Features.Events.Dtos;
 using EventBud.Domain.Event.Aggregate;

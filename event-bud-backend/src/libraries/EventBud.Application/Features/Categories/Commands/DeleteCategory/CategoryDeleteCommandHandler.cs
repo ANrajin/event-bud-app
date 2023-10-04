@@ -1,4 +1,5 @@
 ﻿using EventBud.Application.Contracts;
+using EventBud.Application.Contracts.UnitOfWorks;
 using MediatR;
 
 namespace EventBud.Application.Features.Categories.Commands.DeleteCategory;

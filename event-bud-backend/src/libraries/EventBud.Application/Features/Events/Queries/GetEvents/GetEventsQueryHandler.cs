@@ -1,4 +1,5 @@
 ﻿using EventBud.Application.Contracts;
+using EventBud.Application.Contracts.UnitOfWorks;
 using EventBud.Application.Features.Events.Dtos;
 using MediatR;
 

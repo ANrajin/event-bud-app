@@ -1,6 +1,6 @@
 ﻿using EventBud.Application.Contracts.Repositories;
 
-namespace EventBud.Application.Contracts;
+namespace EventBud.Application.Contracts.UnitOfWorks;
 
 public interface IUnitOfWork
 {

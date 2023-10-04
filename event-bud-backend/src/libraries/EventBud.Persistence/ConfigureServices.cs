@@ -1,5 +1,7 @@
 ﻿using EventBud.Application.Contracts;
+using EventBud.Application.Contracts.DbContexts;
 using EventBud.Application.Contracts.Repositories;
+using EventBud.Application.Contracts.UnitOfWorks;
 using EventBud.Persistence.DBContexts;
 using EventBud.Persistence.Repositories;
 using EventBud.Persistence.UnitOfWorks;

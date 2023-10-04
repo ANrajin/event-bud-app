@@ -1,4 +1,5 @@
 ﻿using EventBud.Application.Contracts;
+using EventBud.Application.Contracts.UnitOfWorks;
 using EventBud.Application.Exceptions;
 using EventBud.Domain.Event.Aggregate;
 using EventBud.Domain.Event.Entities;
