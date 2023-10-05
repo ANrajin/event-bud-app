@@ -8,7 +8,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\EventBud.Application\EventBud.Application.csproj" />
+    <ProjectReference Include="..\..\core\EventBud.Application\EventBud.Application.csproj" />
   </ItemGroup>
 
 

@@ -1,4 +1,4 @@
-﻿using EventBud.Application.Contracts;
+﻿using EventBud.Application.Contracts.DbContexts;
 using EventBud.Domain.Category;
 using EventBud.Domain.Event.Aggregate;
 using EventBud.Domain.Event.Entities;

@@ -8,8 +8,8 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\libraries\EventBud.Application\EventBud.Application.csproj" />
-    <ProjectReference Include="..\..\libraries\EventBud.Persistence\EventBud.Persistence.csproj" />
+    <ProjectReference Include="..\..\libraries\core\EventBud.Application\EventBud.Application.csproj" />
+    <ProjectReference Include="..\..\libraries\infrastructure\EventBud.Persistence\EventBud.Persistence.csproj" />
   </ItemGroup>
 
 
