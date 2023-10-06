@@ -1,8 +1,8 @@
-﻿using MediatR;
+﻿using EventBud.Application.Abstractions.Requests;
 
 namespace EventBud.Application.Features.Categories.Commands.UpdateCategory;
 
-public sealed class UpdateCategoryCommand : IRequest
+public sealed class UpdateCategoryCommand : ICommand
 {
     public required Guid Id { get; set; }
     

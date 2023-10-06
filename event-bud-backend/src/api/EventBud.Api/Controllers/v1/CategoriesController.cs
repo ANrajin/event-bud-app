@@ -19,37 +19,40 @@ public class CategoriesController : ApiBaseController
     {
         var result = await Sender.Send
             (new GetCategoriesQuery(), cancellationToken);
-        return Ok(result);
+
+        return result.IsSuccess ? Ok(result.Data) : StatusCode(503);
     }
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
     {
         var result = await Sender.Send(new GetCategoryQuery(id), cancellationToken);
-        return Ok(result);
+        
+        return result.IsSuccess ? Ok(result.Data) : NotFound();
     }
 
     [HttpPost]
     public async Task<IActionResult> Post(
         [FromBody] CreateCategoryCommand command, CancellationToken cancellationToken)
     {
-        await Sender.Send(command, cancellationToken);
-        return Ok();
+        var result = await Sender.Send(command, cancellationToken);
+
+        return result.IsSuccess ? Ok() : StatusCode(503);
     }
 
     [HttpPut]
     public async Task<IActionResult> Put(
         [FromBody] UpdateCategoryCommand command, CancellationToken cancellationToken)
     {
-        await Sender.Send(command, cancellationToken);
-        return Ok();
+        var result = await Sender.Send(command, cancellationToken);
+        return result.IsSuccess ? Ok() : StatusCode(503);
     }
 
     [HttpDelete]
     public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
     {
-        await Sender.Send(new CategoryDeleteCommand(id), cancellationToken);
+        var result = await Sender.Send(new CategoryDeleteCommand(id), cancellationToken);
 
-        return Ok();
+        return result.IsSuccess ?  Ok() : StatusCode(503);
     }
 }

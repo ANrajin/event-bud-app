@@ -1,11 +1,11 @@
-﻿using EventBud.Application.Contracts;
+﻿using EventBud.Application.Abstractions.Requests;
 using EventBud.Application.Contracts.UnitOfWorks;
 using EventBud.Application.Features.Categories.Dtos;
-using MediatR;
+using EventBud.Domain._Shared;
 
 namespace EventBud.Application.Features.Categories.Queries.GetCategory;
 
-public sealed class GetCategoryQueryHandler : IRequestHandler<GetCategoryQuery, CategoryDto>
+public sealed class GetCategoryQueryHandler : IQueryHandler<GetCategoryQuery, CategoryDto>
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -14,9 +14,12 @@ public sealed class GetCategoryQueryHandler : IRequestHandler<GetCategoryQuery, 
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<CategoryDto> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
+    public async Task<IResult<CategoryDto>> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
     {
         var result = await _unitOfWork.CategoryRepository.GetByIdAsync(request.Id, cancellationToken);
-        return result ?? new CategoryDto();
+
+        return result is not null
+            ? Result.Success(result)
+            : Result.Failure(new CategoryDto());
     }
 }

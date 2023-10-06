@@ -1,11 +1,11 @@
-﻿using EventBud.Application.Contracts;
+﻿using EventBud.Application.Abstractions.Requests;
 using EventBud.Application.Contracts.UnitOfWorks;
+using EventBud.Domain._Shared;
 using EventBud.Domain.Category;
-using MediatR;
 
 namespace EventBud.Application.Features.Categories.Commands.UpdateCategory;
 
-public sealed class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand>
+public sealed class UpdateCategoryCommandHandler : ICommandHandler<UpdateCategoryCommand>
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -14,11 +14,13 @@ public sealed class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategor
         _unitOfWork = unitOfWork;
     }
 
-    public async Task Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
+    public async Task<IResult> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
     {
         var category = Category.Create(request.Title, request.Description);
         await _unitOfWork.CategoryRepository.UpdateAsync(request.Id, category, cancellationToken);
 
         await _unitOfWork.SaveAsync(cancellationToken);
+
+        return Result.Success();
     }
 }
