@@ -1,4 +1,4 @@
-using EventBud.Api.Configurations;
+using EventBud.Host.Configurations;
 using EventBud.Persistence.DBContexts;
 
 var builder = WebApplication.CreateBuilder(args);

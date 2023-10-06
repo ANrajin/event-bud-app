@@ -1,4 +1,4 @@
-﻿namespace EventBud.Api.Configurations;
+﻿namespace EventBud.Host.Configurations;
 
 public static class ConfigurePipelines
 {
