@@ -20,6 +20,6 @@ public sealed class GetCategoryQueryHandler : IQueryHandler<GetCategoryQuery, Ca
 
         return result is not null
             ? Result.Success(result)
-            : Result.Failure(new CategoryDto());
+            : Result.Failure<CategoryDto>(new Error("Not Found", "The requested resource not found!"));
     }
 }
