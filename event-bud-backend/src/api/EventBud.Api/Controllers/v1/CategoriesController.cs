@@ -27,8 +27,8 @@ public class CategoriesController : ApiBaseController
     public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
     {
         var result = await Sender.Send(new GetCategoryQuery(id), cancellationToken);
-        
-        return result.IsSuccess ? Ok(result.Data) : NotFound();
+
+        return result.IsSuccess ? Ok(result.Data) : NotFound(result);
     }
 
     [HttpPost]
@@ -37,7 +37,7 @@ public class CategoriesController : ApiBaseController
     {
         var result = await Sender.Send(command, cancellationToken);
 
-        return result.IsSuccess ? Ok() : StatusCode(503);
+        return result.IsSuccess ? Ok() : BadRequest(result.Errors);
     }
 
     [HttpPut]
