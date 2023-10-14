@@ -2,7 +2,7 @@
 using EventBud.Application.Contracts.Repositories;
 using EventBud.Application.Contracts.UnitOfWorks;
 using EventBud.Persistence.DBContexts;
-using EventBud.Persistence.interceptors;
+using EventBud.Persistence.Interceptors;
 using EventBud.Persistence.Repositories;
 using EventBud.Persistence.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;

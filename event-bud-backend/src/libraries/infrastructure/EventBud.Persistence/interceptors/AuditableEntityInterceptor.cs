@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace EventBud.Persistence.interceptors;
+namespace EventBud.Persistence.Interceptors;
 
 public sealed class AuditableEntityInterceptor : SaveChangesInterceptor
 {
