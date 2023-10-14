@@ -18,17 +18,18 @@ public sealed class MyEventRepository : IMyEventRepository
     
     public async Task<IReadOnlyList<MyEventDto>> GetAllAsync(CancellationToken cancellationToken)
     {
-        return await _dbContext.Events.AsNoTracking()
-            .Select(s => new MyEventDto
-            {
-                Id = s.Id,
-                Title = s.Title,
-                Description = s.Description,
-                Capacity = s.Capacity,
-                EventType = s.EventType,
-                EventLocation = s.EventLocation,
-                Image = s.Image
-            }).ToListAsync(cancellationToken);
+        throw new NotImplementedException();
+        //return await _dbContext.Events.AsNoTracking()
+        //    .Select(s => new MyEventDto
+        //    {
+        //        Id = s.Id,
+        //        Title = s.Title,
+        //        Description = s.Description,
+        //        Capacity = s.Capacity,
+        //        EventType = s.EventType,
+        //        EventLocation = s.EventLocation,
+        //        Image = s.Image
+        //    }).ToListAsync(cancellationToken);
     }
 
     public Task<MyEventDto?> GetByIdAsync(Guid requestId, CancellationToken cancellationToken)
@@ -38,7 +39,8 @@ public sealed class MyEventRepository : IMyEventRepository
 
     public async Task CreatAsync(MyEvent events, CancellationToken cancellationToken)
     {
-        await _dbContext.Events.AddAsync(events, cancellationToken);
+        throw new NotImplementedException();
+        //await _dbContext.Events.AddAsync(events, cancellationToken);
     }
 
     public Task Update(Guid id, MyEvent events, CancellationToken cancellationToken)

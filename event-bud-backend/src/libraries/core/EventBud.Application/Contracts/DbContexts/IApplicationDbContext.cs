@@ -1,6 +1,4 @@
 ﻿using EventBud.Domain.Category;
-using EventBud.Domain.Event.Aggregate;
-using EventBud.Domain.Event.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventBud.Application.Contracts.DbContexts;
@@ -9,11 +7,11 @@ public interface IApplicationDbContext : IDisposable, IAsyncDisposable
 {
     DbSet<Category> Categories { get; }
     
-    DbSet<MyEvent> Events { get; }
+    //DbSet<MyEvent> Events { get; }
     
-    DbSet<EventDate> EventDates { get; }
+    //DbSet<EventDate> EventDates { get; }
     
-    DbSet<Ticket> Tickets { get; }
+    //DbSet<Ticket> Tickets { get; }
     
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

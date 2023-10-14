@@ -1,7 +1,5 @@
 ﻿using EventBud.Application.Contracts.DbContexts;
 using EventBud.Domain.Category;
-using EventBud.Domain.Event.Aggregate;
-using EventBud.Domain.Event.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventBud.Persistence.DBContexts;
@@ -28,9 +26,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     public DbSet<Category> Categories => Set<Category>();
 
-    public DbSet<MyEvent> Events => Set<MyEvent>();
+    //public DbSet<MyEvent> Events => Set<MyEvent>();
 
-    public DbSet<EventDate> EventDates => Set<EventDate>();
+    //public DbSet<EventDate> EventDates => Set<EventDate>();
 
-    public DbSet<Ticket> Tickets => Set<Ticket>();
+    //public DbSet<Ticket> Tickets => Set<Ticket>();
 }

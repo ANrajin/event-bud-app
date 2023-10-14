@@ -2,6 +2,7 @@
 using EventBud.Application.Contracts.Repositories;
 using EventBud.Application.Contracts.UnitOfWorks;
 using EventBud.Persistence.DBContexts;
+using EventBud.Persistence.interceptors;
 using EventBud.Persistence.Repositories;
 using EventBud.Persistence.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +17,18 @@ public static class ConfigureServices
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+        services.AddSingleton<AuditableEntityInterceptor>();
         
-        services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(connectionString, 
+        services.AddDbContext<ApplicationDbContext>((sp, options) =>
+        {
+            var auditableEntityInterceptor = sp.GetService<AuditableEntityInterceptor>()!;
+
+            options.UseSqlServer(connectionString,
                 builder => builder.MigrationsHistoryTable(
-                    HistoryRepository.DefaultTableName, "Application")));
+                    HistoryRepository.DefaultTableName, "Application"))
+            .AddInterceptors(auditableEntityInterceptor);
+        });
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
         services.AddScoped<ApplicationDbContextInitiator>();
