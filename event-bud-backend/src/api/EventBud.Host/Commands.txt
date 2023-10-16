@@ -1,2 +1,5 @@
 ﻿//Create Migrations
 dotnet ef migrations add ApplicationDbContext_ -c ApplicationDbContext -p src/libraries/infrastructure/EventBud.Persistence -s src/api/EventBud.Host -o Migrations
+
+//Update Migrations
+dotnet ef database update -c ApplicationDbContext -p src/libraries/infrastructure/EventBud.Persistence -s src/api/EventBud.Host

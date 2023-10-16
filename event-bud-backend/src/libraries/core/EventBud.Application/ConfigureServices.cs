@@ -1,8 +1,10 @@
-﻿using System.Reflection;
-using EventBud.Application.Behaviours;
+﻿using EventBud.Application.Behaviours;
+using EventBud.Application.IAM.Adapters;
+using EventBud.Application.IAM.Contracts;
+using EventBud.Domain._Shared.IAM.Models;
 using FluentValidation;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace EventBud.Application;
 
@@ -18,7 +20,15 @@ public static class ConfigureServices
             config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             config.AddOpenBehavior(typeof(ValidationPipelineBehaviour<,>));
         });
+
+        RegisterServices(services);
         
         return services;
+    }
+
+    private static void RegisterServices(IServiceCollection services)
+    {
+        services.AddScoped<IUserManagerAdapter<ApplicationUser>, UserManagerAdapter>();
+        services.AddScoped<ISignInManagerAdapter<ApplicationUser>, SignInManagerAdapter>();
     }
 }
