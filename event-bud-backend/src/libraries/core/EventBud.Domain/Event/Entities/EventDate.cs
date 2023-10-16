@@ -1,4 +1,4 @@
-﻿using EventBud.Domain._Commons;
+﻿using EventBud.Domain._Shared;
 using EventBud.Domain.Event.Aggregate;
 
 namespace EventBud.Domain.Event.Entities;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace EventBud.Domain._Commons.ValueConverters;
+namespace EventBud.Domain._Shared.ValueConverters;
 
 public sealed class DateOnlyConverter : ValueConverter<DateOnly, DateTime>
 {
@@ -8,6 +8,6 @@ public sealed class DateOnlyConverter : ValueConverter<DateOnly, DateTime>
         dateOnly => dateOnly.ToDateTime(TimeOnly.MinValue),
         dateTime => DateOnly.FromDateTime(dateTime))
     {
-        
+
     }
 }

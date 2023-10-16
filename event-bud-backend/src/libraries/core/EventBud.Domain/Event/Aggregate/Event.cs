@@ -1,4 +1,4 @@
-﻿using EventBud.Domain._Commons;
+﻿using EventBud.Domain._Shared;
 using EventBud.Domain.Event.Entities;
 using EventBud.Domain.Event.ValueObjects;
 

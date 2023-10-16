@@ -1,4 +1,4 @@
-﻿using EventBud.Domain._Commons;
+﻿using EventBud.Domain._Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 

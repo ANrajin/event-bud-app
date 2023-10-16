@@ -13,15 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{F44053EA-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{EF57F314-26DF-49F2-8A17-5F751DB12915}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBud.Domain", "src\libraries\core\EventBud.Domain\EventBud.Domain.csproj", "{0A8B7B44-53C1-4567-9253-514A96B058A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBud.Domain", "src\libraries\core\EventBud.Domain\EventBud.Domain.csproj", "{0A8B7B44-53C1-4567-9253-514A96B058A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBud.Application", "src\libraries\core\EventBud.Application\EventBud.Application.csproj", "{9B422E3B-6DD3-4655-AC33-8254A3D40058}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBud.Application", "src\libraries\core\EventBud.Application\EventBud.Application.csproj", "{9B422E3B-6DD3-4655-AC33-8254A3D40058}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBud.Persistence", "src\libraries\infrastructure\EventBud.Persistence\EventBud.Persistence.csproj", "{06C53C44-317D-4ADF-AE1F-546C5B891F17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBud.Persistence", "src\libraries\infrastructure\EventBud.Persistence\EventBud.Persistence.csproj", "{06C53C44-317D-4ADF-AE1F-546C5B891F17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBud.Api", "src\api\EventBud.Api\EventBud.Api.csproj", "{7275DD7F-DED0-4A49-8DC2-50CDC1F79558}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBud.Api", "src\api\EventBud.Api\EventBud.Api.csproj", "{7275DD7F-DED0-4A49-8DC2-50CDC1F79558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBud.Host", "src\api\EventBud.Host\EventBud.Host.csproj", "{6A12D1CC-D4D3-463F-995F-803CE19CC704}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBud.Host", "src\api\EventBud.Host\EventBud.Host.csproj", "{6A12D1CC-D4D3-463F-995F-803CE19CC704}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

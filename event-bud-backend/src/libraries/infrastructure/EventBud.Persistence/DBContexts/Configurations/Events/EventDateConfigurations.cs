@@ -1,10 +1,4 @@
-﻿using EventBud.Domain._Commons.ValueComparers;
-using EventBud.Domain._Commons.ValueConverters;
-using EventBud.Domain.Event.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace EventBud.Persistence.DBContexts.Configurations.Events;
+﻿namespace EventBud.Persistence.DBContexts.Configurations.Events;
 
 public sealed class EventDateConfigurations 
     //: IEntityTypeConfiguration<EventDate>

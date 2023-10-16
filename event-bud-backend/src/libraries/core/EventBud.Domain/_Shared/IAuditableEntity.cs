@@ -1,4 +1,4 @@
-﻿namespace EventBud.Domain._Commons;
+﻿namespace EventBud.Domain._Shared;
 
 public interface IAuditableEntity
 {

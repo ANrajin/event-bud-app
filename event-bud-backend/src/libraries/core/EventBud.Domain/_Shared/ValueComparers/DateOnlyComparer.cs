@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace EventBud.Domain._Commons.ValueComparers;
+namespace EventBud.Domain._Shared.ValueComparers;
 
 public class DateOnlyComparer : ValueComparer<DateOnly>
 {

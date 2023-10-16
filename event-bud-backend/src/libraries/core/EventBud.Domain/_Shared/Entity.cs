@@ -1,6 +1,6 @@
-﻿namespace EventBud.Domain._Commons;
+﻿namespace EventBud.Domain._Shared;
 
-public abstract class Entity: IEquatable<Entity>
+public abstract class Entity : IEquatable<Entity>
 {
     public Guid Id { get; protected init; } = Guid.NewGuid();
 
@@ -13,7 +13,7 @@ public abstract class Entity: IEquatable<Entity>
     {
         return !(first == second);
     }
-    
+
     public bool Equals(Entity? other)
     {
         if (other is null) return false;

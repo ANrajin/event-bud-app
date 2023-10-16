@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using EventBud.Domain._Shared;
+using EventBud.Domain._Shared.Results;
 using FluentValidation;
 using MediatR;
 

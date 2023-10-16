@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace EventBud.Domain._Commons.ValueConverters;
+namespace EventBud.Domain._Shared.ValueConverters;
 
 public class TimeOnlyConverter : ValueConverter<TimeOnly, TimeSpan>
 {
@@ -8,6 +8,6 @@ public class TimeOnlyConverter : ValueConverter<TimeOnly, TimeSpan>
         timeOnly => timeOnly.ToTimeSpan(),
         timeSpan => TimeOnly.FromTimeSpan(timeSpan))
     {
-        
+
     }
 }

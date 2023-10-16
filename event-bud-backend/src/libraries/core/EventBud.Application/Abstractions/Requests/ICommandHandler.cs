@@ -1,4 +1,4 @@
-﻿using EventBud.Domain._Shared;
+﻿using EventBud.Domain._Shared.Results;
 using MediatR;
 
 namespace EventBud.Application.Abstractions.Requests;

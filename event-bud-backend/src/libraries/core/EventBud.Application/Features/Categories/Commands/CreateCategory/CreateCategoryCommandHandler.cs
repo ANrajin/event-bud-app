@@ -1,6 +1,6 @@
 ﻿using EventBud.Application.Abstractions.Requests;
 using EventBud.Application.Contracts.UnitOfWorks;
-using EventBud.Domain._Shared;
+using EventBud.Domain._Shared.Results;
 using EventBud.Domain.Category;
 
 namespace EventBud.Application.Features.Categories.Commands.CreateCategory;

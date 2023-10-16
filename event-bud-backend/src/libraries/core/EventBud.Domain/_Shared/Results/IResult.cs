@@ -1,4 +1,4 @@
-﻿namespace EventBud.Domain._Shared;
+﻿namespace EventBud.Domain._Shared.Results;
 
 public interface IResult
 {
