@@ -14,18 +14,9 @@ public sealed class SignInManagerAdapter : ISignInManagerAdapter<ApplicationUser
         _signInManager = signInManager;
     }
 
-    public async Task<SignInResult> PasswordSignInAsync(ApplicationUser user)
+    public async Task<SignInResult> PasswordSignInAsync(string userName, string password)
     {
-        return await _signInManager.PasswordSignInAsync(
-            user.UserName,
-            user.PasswordHash,
-            user.RememberMe,
-            user.LockoutEnabled);
-    }
-
-    public async Task SignInAsync(ApplicationUser user)
-    {
-        await _signInManager.SignInAsync(user, isPersistent: false);
+        return await _signInManager.PasswordSignInAsync(userName, password, false, false);
     }
 
     public async Task SignOutAsync()

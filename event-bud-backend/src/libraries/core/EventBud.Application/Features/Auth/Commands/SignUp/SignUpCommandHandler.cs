@@ -24,7 +24,12 @@ public sealed class SignUpCommandHandler : ICommandHandler<SignUpCommand>
             NormalizedUserName = request.UserName.ToUpperInvariant(),
         };
 
-        await _userManager.CreateAsync(applicationUser, request.Password);
+        var response = await _userManager.CreateAsync(applicationUser, request.Password);
+
+        if(response.Errors.Any())
+        {
+            return Result.Failure(response.Errors.Select(s => new Error(s.Code, s.Description)).ToList());
+        }
 
         return Result.Success();
     }

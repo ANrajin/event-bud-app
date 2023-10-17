@@ -20,7 +20,7 @@ public class CategoriesController : ApiBaseController
         var result = await Sender.Send
             (new GetCategoriesQuery(), cancellationToken);
 
-        return result.IsSuccess ? Ok(result.Data) : StatusCode(503);
+        return result.Succeeded ? Ok(result.Data) : StatusCode(503);
     }
 
     [HttpGet("{id:guid}")]
@@ -28,7 +28,7 @@ public class CategoriesController : ApiBaseController
     {
         var result = await Sender.Send(new GetCategoryQuery(id), cancellationToken);
 
-        return result.IsSuccess ? Ok(result.Data) : NotFound(result);
+        return result.Succeeded ? Ok(result.Data) : NotFound(result);
     }
 
     [HttpPost]
@@ -37,7 +37,7 @@ public class CategoriesController : ApiBaseController
     {
         var result = await Sender.Send(command, cancellationToken);
 
-        return result.IsSuccess ? Ok() : BadRequest(result.Errors);
+        return result.Succeeded ? Ok() : BadRequest(result.Errors);
     }
 
     [HttpPut]
@@ -45,7 +45,7 @@ public class CategoriesController : ApiBaseController
         [FromBody] UpdateCategoryCommand command, CancellationToken cancellationToken)
     {
         var result = await Sender.Send(command, cancellationToken);
-        return result.IsSuccess ? Ok() : StatusCode(503);
+        return result.Succeeded ? Ok() : StatusCode(503);
     }
 
     [HttpDelete]
@@ -53,6 +53,6 @@ public class CategoriesController : ApiBaseController
     {
         var result = await Sender.Send(new CategoryDeleteCommand(id), cancellationToken);
 
-        return result.IsSuccess ?  Ok() : StatusCode(503);
+        return result.Succeeded ?  Ok() : StatusCode(503);
     }
 }

@@ -14,7 +14,16 @@ public class UserManager : UserManager<ApplicationUser>
        IEnumerable<IPasswordValidator<ApplicationUser>> passwordValidators,
        ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors,
        IServiceProvider services, ILogger<UserManager<ApplicationUser>> logger)
-       : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
+       : base(
+           store, 
+           optionsAccessor, 
+           passwordHasher, 
+           userValidators, 
+           passwordValidators, 
+           keyNormalizer, 
+           errors, 
+           services, 
+           logger)
     {
     }
 }
