@@ -8,12 +8,12 @@ public class Result : IResult
         IReadOnlyCollection<Error> errors
         )
     {
-        IsSuccess = isSuccess;
+        Succeeded = isSuccess;
         Errors = errors;
         Type = type.ToString();
     }
 
-    public bool IsSuccess { get; }
+    public bool Succeeded { get; }
     public string Type { get; }
     public IReadOnlyCollection<Error> Errors { get; }
 

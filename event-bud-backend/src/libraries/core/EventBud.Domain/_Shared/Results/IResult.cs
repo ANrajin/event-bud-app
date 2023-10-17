@@ -2,7 +2,7 @@
 
 public interface IResult
 {
-    bool IsSuccess { get; }
+    bool Succeeded { get; }
     string Type { get; }
     IReadOnlyCollection<Error> Errors { get; }
 }
