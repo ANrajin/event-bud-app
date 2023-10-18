@@ -1,15 +1,15 @@
-﻿using EventBud.Application.IAM.Contracts;
-using EventBud.Application.IAM.Services;
+﻿using EventBud.Application.Contracts.Services.IdentityAccessManagement;
+using EventBud.Application.Services.IdentityAccessManagement;
 using EventBud.Domain._Shared.IAM.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace EventBud.Application.IAM.Adapters;
+namespace EventBud.Application.Adapters.IdentityAccessManagement;
 
 public class UserManagerAdapter : IUserManagerAdapter<ApplicationUser>
 {
-    private readonly UserManager _userManager;
+    private readonly UserManagerService _userManager;
 
-    public UserManagerAdapter(UserManager userManager)
+    public UserManagerAdapter(UserManagerService userManager)
     {
         _userManager = userManager;
     }

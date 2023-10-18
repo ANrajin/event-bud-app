@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace EventBud.Application.IAM.Services;
+namespace EventBud.Application.Services.IdentityAccessManagement;
 
-public class UserManager : UserManager<ApplicationUser>
+public class UserManagerService : UserManager<ApplicationUser>
 {
-    public UserManager(IUserStore<ApplicationUser> store,
+    public UserManagerService(IUserStore<ApplicationUser> store,
        IOptions<IdentityOptions> optionsAccessor,
        IPasswordHasher<ApplicationUser> passwordHasher,
        IEnumerable<IUserValidator<ApplicationUser>> userValidators,
@@ -15,14 +15,14 @@ public class UserManager : UserManager<ApplicationUser>
        ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors,
        IServiceProvider services, ILogger<UserManager<ApplicationUser>> logger)
        : base(
-           store, 
-           optionsAccessor, 
-           passwordHasher, 
-           userValidators, 
-           passwordValidators, 
-           keyNormalizer, 
-           errors, 
-           services, 
+           store,
+           optionsAccessor,
+           passwordHasher,
+           userValidators,
+           passwordValidators,
+           keyNormalizer,
+           errors,
+           services,
            logger)
     {
     }

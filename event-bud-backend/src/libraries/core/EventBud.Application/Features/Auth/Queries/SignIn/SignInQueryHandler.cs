@@ -1,5 +1,5 @@
 ﻿using EventBud.Application.Abstractions.Requests;
-using EventBud.Application.IAM.Contracts;
+using EventBud.Application.Contracts.Services.IdentityAccessManagement;
 using EventBud.Domain._Shared.IAM.Models;
 using EventBud.Domain._Shared.Results;
 

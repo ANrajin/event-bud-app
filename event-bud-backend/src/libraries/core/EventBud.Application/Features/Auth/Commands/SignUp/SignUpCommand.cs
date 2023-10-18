@@ -7,4 +7,4 @@ public sealed record SignUpCommand(
     string Email,
     string Password,
     string ConfirmPassword,
-    string Image) : ICommand;
+    string Image) : ICommand<SignUpCommandResponse>;

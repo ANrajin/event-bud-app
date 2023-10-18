@@ -1,7 +1,7 @@
 ﻿using EventBud.Domain._Shared.IAM.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace EventBud.Application.IAM.Contracts;
+namespace EventBud.Application.Contracts.Services.IdentityAccessManagement;
 
 public interface IUserManagerAdapter<TUser> : IDisposable where TUser : class
 {

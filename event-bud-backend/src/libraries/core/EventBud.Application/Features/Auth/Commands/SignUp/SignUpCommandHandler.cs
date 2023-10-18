@@ -1,20 +1,24 @@
 ﻿using EventBud.Application.Abstractions.Requests;
-using EventBud.Application.IAM.Contracts;
+using EventBud.Application.Contracts.Services.IdentityAccessManagement;
 using EventBud.Domain._Shared.IAM.Models;
 using EventBud.Domain._Shared.Results;
 
 namespace EventBud.Application.Features.Auth.Commands.SignUp;
 
-public sealed class SignUpCommandHandler : ICommandHandler<SignUpCommand>
+public sealed class SignUpCommandHandler : ICommandHandler<SignUpCommand, SignUpCommandResponse>
 {
     private readonly IUserManagerAdapter<ApplicationUser> _userManager;
+    private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
-    public SignUpCommandHandler(IUserManagerAdapter<ApplicationUser> userManager)
+    public SignUpCommandHandler(
+        IUserManagerAdapter<ApplicationUser> userManager, 
+        IJwtTokenGenerator jwtTokenGenerator)
     {
         _userManager = userManager;
+        _jwtTokenGenerator = jwtTokenGenerator;
     }
 
-    public async Task<IResult> Handle(SignUpCommand request, CancellationToken cancellationToken)
+    public async Task<IResult<SignUpCommandResponse>> Handle(SignUpCommand request, CancellationToken cancellationToken)
     {
         var applicationUser = new ApplicationUser
         {
@@ -28,9 +32,16 @@ public sealed class SignUpCommandHandler : ICommandHandler<SignUpCommand>
 
         if(response.Errors.Any())
         {
-            return Result.Failure(response.Errors.Select(s => new Error(s.Code, s.Description)).ToList());
+            return Result.Failure<SignUpCommandResponse>
+                (response.Errors.Select(s => new Error(s.Code, s.Description))
+                .ToList());
         }
 
-        return Result.Success();
+        var result = new SignUpCommandResponse
+        {
+            Token = _jwtTokenGenerator.GenerateJwtToken(Guid.NewGuid(), request.UserName, request.Email)
+        };
+
+        return Result.Success<SignUpCommandResponse>(result);
     }
 }

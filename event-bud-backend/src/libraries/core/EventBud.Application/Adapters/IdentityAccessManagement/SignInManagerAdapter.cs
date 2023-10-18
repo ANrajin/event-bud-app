@@ -1,15 +1,15 @@
-﻿using EventBud.Application.IAM.Contracts;
-using EventBud.Application.IAM.Services;
+﻿using EventBud.Application.Contracts.Services.IdentityAccessManagement;
+using EventBud.Application.Services.IdentityAccessManagement;
 using EventBud.Domain._Shared.IAM.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace EventBud.Application.IAM.Adapters;
+namespace EventBud.Application.Adapters.IdentityAccessManagement;
 
 public sealed class SignInManagerAdapter : ISignInManagerAdapter<ApplicationUser>
 {
-    private readonly SignInManager _signInManager;
+    private readonly SignInManagerService _signInManager;
 
-    public SignInManagerAdapter(SignInManager signInManager)
+    public SignInManagerAdapter(SignInManagerService signInManager)
     {
         _signInManager = signInManager;
     }

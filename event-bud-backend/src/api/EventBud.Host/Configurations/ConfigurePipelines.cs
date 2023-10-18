@@ -16,6 +16,7 @@ public static class ConfigurePipelines
         }
 
         app.UseHttpsRedirection();
+        app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
 

@@ -1,10 +1,12 @@
 ﻿using EventBud.Api;
 using EventBud.Application;
-using EventBud.Application.IAM.Services;
+using EventBud.Application.Services.IdentityAccessManagement;
 using EventBud.Domain._Shared.IAM.Models;
 using EventBud.Persistence;
 using EventBud.Persistence.DBContexts;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace EventBud.Host.Configurations;
@@ -14,7 +16,7 @@ public static class ConfigureServices
     public static WebApplicationBuilder AddServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddApiServices();
-        builder.Services.AddApplicationServices();
+        builder.Services.AddApplicationServices(builder.Configuration);
         builder.Services.AddPersistenceServices(builder.Configuration);
         
         builder.Services.AddEndpointsApiExplorer();
@@ -50,8 +52,8 @@ public static class ConfigureServices
         builder.Services
         .AddIdentity<ApplicationUser, Role>()
         .AddEntityFrameworkStores<ApplicationDbContext>()
-        .AddUserManager<UserManager>()
-        .AddSignInManager<SignInManager>()
+        .AddUserManager<UserManagerService>()
+        .AddSignInManager<SignInManagerService>()
         .AddDefaultTokenProviders();
 
         builder.Services.Configure<IdentityOptions>(options =>
