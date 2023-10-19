@@ -7,9 +7,7 @@ public interface IUserManagerAdapter<TUser> : IDisposable where TUser : class
 {
     Task<IdentityResult> CreateAsync(TUser applicationUser, string password);
 
-    Task<string> GetUserIdAsync(TUser applicationUser);
-
     Task<ApplicationUser> FindByEmailAsync(string email);
 
-    Task<IdentityResult> AddToRoleAsync(ApplicationUser applicationUser, string role);
+    Task<ApplicationUser> FindByUserNameAsync(string userName);
 }

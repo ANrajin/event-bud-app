@@ -14,6 +14,8 @@ public class UserManagerAdapter : IUserManagerAdapter<ApplicationUser>
         _userManager = userManager;
     }
 
+    public void Dispose() => _userManager.Dispose();
+
     public async Task<IdentityResult> CreateAsync(ApplicationUser user, string password)
     {
         if (user is null)
@@ -30,22 +32,8 @@ public class UserManagerAdapter : IUserManagerAdapter<ApplicationUser>
         return result;
     }
 
-    public async Task<string> GetUserIdAsync(ApplicationUser user)
-    {
-        var result = await _userManager.GetUserIdAsync(user);
+    public async Task<ApplicationUser> FindByEmailAsync(string email) => await _userManager.FindByEmailAsync(email);
 
-        return result;
-    }
 
-    public async Task<ApplicationUser> FindByEmailAsync(string email)
-    {
-        return await _userManager.FindByEmailAsync(email) ?? new();
-    }
-
-    public async Task<IdentityResult> AddToRoleAsync(ApplicationUser user, string role)
-    {
-        return await _userManager.AddToRoleAsync(user, role);
-    }
-
-    public void Dispose() => _userManager.Dispose();
+    public async Task<ApplicationUser> FindByUserNameAsync(string userName) => await _userManager.FindByNameAsync(userName);
 }
