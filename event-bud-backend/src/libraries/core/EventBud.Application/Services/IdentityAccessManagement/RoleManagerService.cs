@@ -4,14 +4,14 @@ using Microsoft.Extensions.Logging;
 
 namespace EventBud.Application.Services.IdentityAccessManagement;
 
-public class RoleManagerService : RoleManager<ApplicationUser>
+public class RoleManagerService : RoleManager<Role>
 {
     public RoleManagerService(
-        IRoleStore<ApplicationUser> store,
-        IEnumerable<IRoleValidator<ApplicationUser>> roleValidators,
+        IRoleStore<Role> store,
+        IEnumerable<IRoleValidator<Role>> roleValidators,
         ILookupNormalizer keyNormalizer,
         IdentityErrorDescriber errors,
-        ILogger<RoleManager<ApplicationUser>> logger)
+        ILogger<RoleManager<Role>> logger)
         : base(
             store,
             roleValidators,

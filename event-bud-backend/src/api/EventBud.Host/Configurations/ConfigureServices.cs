@@ -54,6 +54,7 @@ public static class ConfigureServices
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddUserManager<UserManagerService>()
         .AddSignInManager<SignInManagerService>()
+        .AddRoleManager<RoleManagerService>()
         .AddDefaultTokenProviders();
 
         builder.Services.Configure<IdentityOptions>(options =>
