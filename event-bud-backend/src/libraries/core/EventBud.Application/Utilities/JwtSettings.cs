@@ -6,7 +6,7 @@ public sealed class JwtSettings
 
     public string SecretKey { get; init; } = null!;
 
-    public int ExpiryMinute { get; init; } = default;
+    public int ExpiryMinute { get; init; } = 60;
 
     public string Issuer { get; init; } = null!;
 

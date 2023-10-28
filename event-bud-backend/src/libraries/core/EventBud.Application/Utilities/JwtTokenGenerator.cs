@@ -22,7 +22,9 @@ public sealed class JwtTokenGenerator : IJwtTokenGenerator
 
     public string GenerateJwtToken(Guid id, string firstName, string lastName)
     {
-        var signInCreadentials = new SigningCredentials(
+        var tokenHandler = new JwtSecurityTokenHandler();
+
+        var signInCredentials = new SigningCredentials(
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.SecretKey)),
             SecurityAlgorithms.HmacSha256);
 
@@ -33,13 +35,22 @@ public sealed class JwtTokenGenerator : IJwtTokenGenerator
             new Claim(JwtRegisteredClaimNames.UniqueName, id.ToString()),
         };
 
-        var securityToken = new JwtSecurityToken(
-            issuer: _jwtSettings.Issuer,
-            audience: _jwtSettings.Audience,
-            expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinute),
-            claims: claims,
-            signingCredentials: signInCreadentials);
+        var securityTokenDescriptor = new SecurityTokenDescriptor
+        {
+            Expires = _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinute),
+            SigningCredentials = signInCredentials,
+            Subject = new ClaimsIdentity(claims),
+            Issuer = _jwtSettings.Issuer,
+            Audience = _jwtSettings.Audience,
+        };
 
-        return new JwtSecurityTokenHandler().WriteToken(securityToken);
+        var token = tokenHandler.CreateToken(securityTokenDescriptor);
+
+        return tokenHandler.WriteToken(token);
+    }
+
+    public string GenerateJwtRefreshToken()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -42,6 +42,6 @@ public sealed class SignUpCommandHandler : ICommandHandler<SignUpCommand, SignUp
             Token = _jwtTokenGenerator.GenerateJwtToken(Guid.NewGuid(), request.UserName, request.Email)
         };
 
-        return Result.Success<SignUpCommandResponse>(result);
+        return Result.Success(result);
     }
 }

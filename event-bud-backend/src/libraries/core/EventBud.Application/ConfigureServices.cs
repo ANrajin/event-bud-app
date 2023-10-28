@@ -51,29 +51,31 @@ public static class ConfigureServices
     {
         JwtSettings jwtSettings = new();
         configuration.Bind(JwtSettings.SectionName, jwtSettings);
-
         services.AddSingleton(Options.Create(jwtSettings));
+        
+        var key = Encoding.UTF8.GetBytes(jwtSettings.SecretKey);
+        TokenValidationParameters tokenValidationParameters = new()
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwtSettings.Issuer,
+            ValidAudience = jwtSettings.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+        };
+
+        services.AddSingleton(tokenValidationParameters);
 
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        })
-            .AddJwtBearer(options =>
+        }).AddJwtBearer(options =>
             {
-                var key = Encoding.UTF8.GetBytes(jwtSettings.SecretKey);
                 options.SaveToken = true;
-                options.TokenValidationParameters = options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings.Issuer,
-                    ValidAudience = jwtSettings.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                };
+                options.TokenValidationParameters = tokenValidationParameters;
             });
 
         return services;

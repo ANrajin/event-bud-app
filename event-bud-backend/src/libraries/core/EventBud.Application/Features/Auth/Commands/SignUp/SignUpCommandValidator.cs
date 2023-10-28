@@ -8,10 +8,14 @@ public sealed class SignUpCommandValidator : AbstractValidator<SignUpCommand>
     {
         RuleFor(x => x.UserName)
             .NotNull()
-            .NotEmpty();
+            .NotEmpty()
+            .WithMessage("The {PropertyName} is required!");
 
         RuleFor(x => x.Password)
             .NotNull()
-            .NotEmpty();
+            .NotEmpty()
+            .WithMessage("The {PropertyName} is required!")
+            .MinimumLength(5)
+            .WithMessage("The {PropertyName} must be minimun 5 character!");
     }
 }
