@@ -2,7 +2,7 @@
 
 public interface IJwtTokenGenerator
 {
-    string GenerateJwtToken(Guid id, string firstName, string lastName);
+    string GenerateJwtToken(Guid id, string userName, string email);
 
     string GenerateJwtRefreshToken();
 }

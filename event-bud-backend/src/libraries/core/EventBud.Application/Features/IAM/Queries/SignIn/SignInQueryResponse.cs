@@ -1,4 +1,4 @@
-﻿namespace EventBud.Application.Features.Auth.Queries.SignIn;
+﻿namespace EventBud.Application.Features.IAM.Queries.SignIn;
 
 public sealed class SignInQueryResponse
 {

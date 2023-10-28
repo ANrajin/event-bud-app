@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using EventBud.Application.Features.Auth.Queries.SignIn;
+using EventBud.Application.Features.IAM.Queries.SignIn;
 
 namespace EventBud.Api.Controllers.v1.IAM;
 

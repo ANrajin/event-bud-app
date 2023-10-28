@@ -1,4 +1,4 @@
-﻿namespace EventBud.Application.Features.Auth.Commands.SignUp;
+﻿namespace EventBud.Application.Features.IAM.Commands.SignUp;
 
 public sealed class SignUpCommandResponse
 {

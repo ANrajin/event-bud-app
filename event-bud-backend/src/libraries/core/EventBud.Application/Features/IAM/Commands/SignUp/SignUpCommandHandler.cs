@@ -3,7 +3,7 @@ using EventBud.Application.Contracts.Services.IdentityAccessManagement;
 using EventBud.Domain._Shared.IAM.Models;
 using EventBud.Domain._Shared.Results;
 
-namespace EventBud.Application.Features.Auth.Commands.SignUp;
+namespace EventBud.Application.Features.IAM.Commands.SignUp;
 
 public sealed class SignUpCommandHandler : ICommandHandler<SignUpCommand, SignUpCommandResponse>
 {
@@ -18,7 +18,8 @@ public sealed class SignUpCommandHandler : ICommandHandler<SignUpCommand, SignUp
         _jwtTokenGenerator = jwtTokenGenerator;
     }
 
-    public async Task<IResult<SignUpCommandResponse>> Handle(SignUpCommand request, CancellationToken cancellationToken)
+    public async Task<IResult<SignUpCommandResponse>> Handle(SignUpCommand request, 
+        CancellationToken cancellationToken)
     {
         var applicationUser = new ApplicationUser
         {

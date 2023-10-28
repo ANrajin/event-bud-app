@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Categories\Queries\" />
+    <Folder Include="Features\IAM\" />
   </ItemGroup>
 
 </Project>

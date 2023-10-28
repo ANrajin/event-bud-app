@@ -4,7 +4,7 @@ using EventBud.Application.Extensions;
 using EventBud.Domain._Shared.IAM.Models;
 using EventBud.Domain._Shared.Results;
 
-namespace EventBud.Application.Features.Auth.Queries.SignIn;
+namespace EventBud.Application.Features.IAM.Queries.SignIn;
 
 public sealed class SignInQueryHandler : ICommandHandler<SignInQuery, SignInQueryResponse>
 {

@@ -1,6 +1,6 @@
 ﻿using EventBud.Application.Abstractions.Requests;
 
-namespace EventBud.Application.Features.Auth.Commands.SignUp;
+namespace EventBud.Application.Features.IAM.Commands.SignUp;
 
 public sealed record SignUpCommand(
     string UserName,

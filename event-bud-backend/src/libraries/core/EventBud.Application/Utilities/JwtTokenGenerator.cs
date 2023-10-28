@@ -20,7 +20,7 @@ public sealed class JwtTokenGenerator : IJwtTokenGenerator
         _jwtSettings = jwtSettings.Value;
     }
 
-    public string GenerateJwtToken(Guid id, string firstName, string lastName)
+    public string GenerateJwtToken(Guid id, string userName, string email)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -30,7 +30,8 @@ public sealed class JwtTokenGenerator : IJwtTokenGenerator
 
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, $"{firstName} {lastName}"),
+            new Claim(JwtRegisteredClaimNames.Sub, userName),
+            new Claim(JwtRegisteredClaimNames.Email, email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.UniqueName, id.ToString()),
         };
