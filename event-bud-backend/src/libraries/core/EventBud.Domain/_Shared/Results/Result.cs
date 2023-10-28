@@ -34,16 +34,23 @@ public class Result : IResult
 public class Result<T> : Result, IResult<T>
 {
     public T? Data { get; }
-
-    private Result(bool isSuccess, ResultType type, IReadOnlyCollection<Error> errors, T? data)
+    
+    private Result(
+        bool isSuccess, 
+        ResultType type, 
+        IReadOnlyCollection<Error> errors, 
+        T? data)
         : base(isSuccess, type, errors)
     {
         Data = data;
     }
 
-    internal static Result<T> Success(T data) => new(true, ResultType.Success, new List<Error>(), data);
+    internal static Result<T> Success(T data) => 
+        new(true, ResultType.Success, new List<Error>(), data);
+    
     internal new static Result<T> Failure(Error error) =>
         new(false, ResultType.ServerError, new List<Error> { error }, default);
+    
     internal new static Result<T> Failure(IReadOnlyCollection<Error> errors)
         => new(false, ResultType.ValidationError, errors, default);
 }

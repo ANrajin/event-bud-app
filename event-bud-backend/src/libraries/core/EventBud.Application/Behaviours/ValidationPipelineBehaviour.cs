@@ -54,8 +54,11 @@ public class ValidationPipelineBehaviour<TRequest, TResponse>
         var validationResult = typeof(Result<>)
             .GetGenericTypeDefinition()
             .MakeGenericType(typeof(TResult).GetGenericArguments().First())
-            .GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-            .FirstOrDefault()!
+            .GetMethod("Failure",
+                BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.ExactBinding,
+                null,
+                new[] { typeof(IReadOnlyCollection<Error>) },
+                null)!
             .Invoke(null, new object[] { errors });
         
         return (TResult)validationResult!;
