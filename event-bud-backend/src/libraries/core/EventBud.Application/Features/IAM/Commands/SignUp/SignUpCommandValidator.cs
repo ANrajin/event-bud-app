@@ -16,6 +16,6 @@ public sealed class SignUpCommandValidator : AbstractValidator<SignUpCommand>
             .NotEmpty()
             .WithMessage("The {PropertyName} is required!")
             .MinimumLength(5)
-            .WithMessage("The {PropertyName} must be minimun 5 character!");
+            .WithMessage("The {PropertyName} must be minimum 5 character!");
     }
 }

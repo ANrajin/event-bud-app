@@ -14,9 +14,9 @@ public sealed class SignInManagerAdapter : ISignInManagerAdapter<ApplicationUser
         _signInManager = signInManager;
     }
 
-    public async Task<SignInResult> PasswordSignInAsync(string userName, string password)
+    public async Task<SignInResult> CheckPasswordAsync(ApplicationUser user, string password, bool lockoutOnFailure)
     {
-        return await _signInManager.PasswordSignInAsync(userName, password, false, false);
+        return await _signInManager.CheckPasswordSignInAsync(user, password, lockoutOnFailure);
     }
 
     public async Task SignOutAsync()

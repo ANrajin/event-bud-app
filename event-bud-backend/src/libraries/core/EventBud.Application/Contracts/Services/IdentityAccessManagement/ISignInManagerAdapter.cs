@@ -5,6 +5,6 @@ namespace EventBud.Application.Contracts.Services.IdentityAccessManagement;
 
 public interface ISignInManagerAdapter<TUser> where TUser : class
 {
-    Task<SignInResult> PasswordSignInAsync(string userName, string password);
+    Task<SignInResult> CheckPasswordAsync(ApplicationUser user, string password, bool lockoutOnFailure);
     Task SignOutAsync();
 }

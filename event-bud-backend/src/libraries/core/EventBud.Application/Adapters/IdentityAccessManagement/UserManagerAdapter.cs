@@ -13,9 +13,7 @@ public class UserManagerAdapter : IUserManagerAdapter<ApplicationUser>
     {
         _userManager = userManager;
     }
-
-    public void Dispose() => _userManager.Dispose();
-
+    
     public async Task<IdentityResult> CreateAsync(ApplicationUser user, string password)
     {
         if (user is null)
@@ -24,16 +22,14 @@ public class UserManagerAdapter : IUserManagerAdapter<ApplicationUser>
         if (string.IsNullOrWhiteSpace(password))
             throw new InvalidOperationException("You must provide a password");
 
-        var result = await _userManager.CreateAsync(user, password);
-
-        if (!result.Succeeded)
-            return result;
-
-        return result;
+        return await _userManager.CreateAsync(user, password);
     }
 
-    public async Task<ApplicationUser> FindByEmailAsync(string email) => await _userManager.FindByEmailAsync(email);
-
-
-    public async Task<ApplicationUser> FindByUserNameAsync(string userName) => await _userManager.FindByNameAsync(userName);
+    public async Task<ApplicationUser?> FindByEmailAsync(string email) => 
+        await _userManager.FindByEmailAsync(email);
+    
+    public async Task<ApplicationUser?> FindByUserNameAsync(string userName) => 
+        await _userManager.FindByNameAsync(userName);
+    
+    public void Dispose() => _userManager.Dispose();
 }

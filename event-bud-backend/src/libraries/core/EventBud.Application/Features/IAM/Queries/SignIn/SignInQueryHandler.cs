@@ -24,28 +24,23 @@ public sealed class SignInQueryHandler : ICommandHandler<SignInQuery, SignInQuer
 
     public async Task<IResult<SignInQueryResponse>> Handle(SignInQuery request, CancellationToken cancellationToken)
     {
-        ApplicationUser user;
-        
-        if(request.UserName.IsValidEmail())
-        {
-            user = await _userManagerAdapter.FindByEmailAsync(request.UserName);
-        }
-        else
-        {
-            user = await _userManagerAdapter.FindByUserNameAsync(request.UserName);
-        }
+        var user = request.UserName.IsValidEmail()
+            ? await _userManagerAdapter.FindByEmailAsync(request.UserName)
+            : await _userManagerAdapter.FindByUserNameAsync(request.UserName);
         
         if (user is null)
-            return Result.Failure<SignInQueryResponse>(new Error("Authentication Failed", "Invalid username or password!"));
+            return Result.Failure<SignInQueryResponse>(
+                new Error("Authentication Failed", "Invalid username or password!"));
         
-        var response = await _signInManagerAdapter.PasswordSignInAsync(request.UserName, request.Password);
+        var response = await _signInManagerAdapter.CheckPasswordAsync(user, request.Password, false);
         
         if (!response.Succeeded)
-            return Result.Failure<SignInQueryResponse>(new Error("Authentication Failed", "Invalid username or password!"));
+            return Result.Failure<SignInQueryResponse>(
+                new Error("Authentication Failed", "Invalid username or password!"));
         
-        return Result.Success<SignInQueryResponse>(new SignInQueryResponse
+        return Result.Success(new SignInQueryResponse
         {
-            Token = "Token"
+            Token = _jwtTokenGenerator.GenerateJwtToken(Guid.NewGuid(), user.UserName!, user.Email!)
         });
     }
 }

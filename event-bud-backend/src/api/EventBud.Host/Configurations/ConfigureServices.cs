@@ -44,6 +44,27 @@ public static class ConfigureServices
                     Url = new Uri("https://anrajin.github.io/me")
                 }
             });
+
+            var securityScheme = new OpenApiSecurityScheme
+            {
+                In = ParameterLocation.Header,
+                Name = "Authentication",
+                Type = SecuritySchemeType.Http,
+                Scheme = JwtBearerDefaults.AuthenticationScheme,
+                BearerFormat = "JWT",
+                Description = "Please provide the bearer token to access protected end points.",
+                Reference = new OpenApiReference
+                {
+                    Id = JwtBearerDefaults.AuthenticationScheme,
+                    Type = ReferenceType.SecurityScheme
+                }
+            };
+            
+            options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, securityScheme);
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {securityScheme, Array.Empty<string>()}
+            });
         });
     }
 

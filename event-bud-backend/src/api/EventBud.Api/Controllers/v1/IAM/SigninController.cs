@@ -1,9 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using EventBud.Application.Features.IAM.Queries.SignIn;
 
 namespace EventBud.Api.Controllers.v1.IAM;
 
+[AllowAnonymous]
 public class SigninController : ApiBaseController
 {
     public SigninController(ISender sender) 
@@ -12,7 +14,7 @@ public class SigninController : ApiBaseController
     }
     
     [HttpPost]
-    public async Task<IActionResult> SignIn(
+    public async Task<IActionResult> Post(
         [FromBody] SignInQuery query, CancellationToken cancellationToken)
     {
         var result = await Sender.Send(query, cancellationToken);
