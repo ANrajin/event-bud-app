@@ -21,14 +21,14 @@ public static class ConfigureServices
         
         builder.Services.AddEndpointsApiExplorer();
 
-        AddSwagger(builder);
+        ConfigureSwagger(builder);
 
         ConfigureIdentityAndAccessManagement(builder);
 
         return builder;
     }
 
-    private static void AddSwagger(WebApplicationBuilder builder)
+    private static void ConfigureSwagger(WebApplicationBuilder builder)
     {
         builder.Services.AddSwaggerGen(options =>
         {

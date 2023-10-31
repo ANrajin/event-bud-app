@@ -36,18 +36,17 @@ public static class ConfigureServices
         return services;
     }
 
-    private static IServiceCollection RegisterServices(IServiceCollection services)
+    private static void RegisterServices(IServiceCollection services)
     {
         services.AddScoped<IDateTimeProvider, DateTimeProvider>();
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddScoped<IUserManagerAdapter<ApplicationUser>, UserManagerAdapter>();
         services.AddScoped<ISignInManagerAdapter<ApplicationUser>, SignInManagerAdapter>();
         services.AddScoped<IRoleManagerAdapter<ApplicationUser>, RoleManagerAdapter>();
-
-        return services;
     }
 
-    private static IServiceCollection ConfigureJwtAuthentication(IServiceCollection services, IConfiguration configuration)
+    private static void ConfigureJwtAuthentication(IServiceCollection services, 
+        IConfiguration configuration)
     {
         JwtSettings jwtSettings = new();
         configuration.Bind(JwtSettings.SectionName, jwtSettings);
@@ -78,7 +77,5 @@ public static class ConfigureServices
                 options.SaveToken = true;
                 options.TokenValidationParameters = tokenValidationParameters;
             });
-
-        return services;
     }
 }

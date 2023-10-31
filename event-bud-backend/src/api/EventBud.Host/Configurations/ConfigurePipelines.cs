@@ -16,6 +16,7 @@ public static class ConfigurePipelines
         }
 
         app.UseHttpsRedirection();
+        app.UseCors("default");
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
