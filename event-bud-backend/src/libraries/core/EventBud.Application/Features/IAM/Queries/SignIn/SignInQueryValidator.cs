@@ -1,6 +1,23 @@
-﻿namespace EventBud.Application.Features.IAM.Queries.SignIn
+﻿using FluentValidation;
+
+namespace EventBud.Application.Features.IAM.Queries.SignIn
 {
-    internal class SignInQueryValidator
+    public sealed class SignInQueryValidator : AbstractValidator<SignInQuery>
     {
+        public SignInQueryValidator()
+        {
+            RuleFor(x => x.UserName)
+                .NotNull()
+                .NotEmpty()
+                .WithMessage("The {PropertyName} is required!");
+
+            RuleFor(x => x.Password)
+                .Cascade(cascadeMode: CascadeMode.Stop)
+                .NotNull()
+                .NotEmpty()
+                .WithMessage("The {PropertyName} is required!")
+                .MinimumLength(5)
+                .WithMessage("The {PropertyName} must be minimum 5 character!");
+        }
     }
 }

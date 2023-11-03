@@ -28,7 +28,8 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <div class="relative">
-                        <input type="text" id="username" class="form-control w-full ps-10" placeholder="please enter your username">
+                        <input type="text" id="username" class="form-control w-full ps-10"
+                            placeholder="please enter your username">
                         <span class="absolute top-2 left-0 ps-3 text-gray-400">
                             <i class="bi bi-person-circle"></i>
                         </span>
@@ -37,7 +38,8 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <div class="relative">
-                        <input type="email" id="email" class="form-control w-full ps-10" placeholder="please enter your email">
+                        <input type="email" id="email" class="form-control w-full ps-10"
+                            placeholder="please enter your email">
                         <span class="absolute top-2 left-0 ps-3 text-gray-400">
                             <i class="bi bi-envelope-at"></i>
                         </span>
@@ -46,7 +48,8 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="relative">
-                        <input type="password" id="password" class="form-control w-full ps-10" placeholder="please enter your password">
+                        <input type="password" id="password" class="form-control w-full ps-10"
+                            placeholder="please enter your password">
                         <span class="absolute top-2 left-0 ps-3 text-gray-400">
                             <i class="bi bi-shield-lock"></i>
                         </span>
@@ -55,7 +58,8 @@
                 <div class="form-group">
                     <label for="confirmpassword">Confirm Password</label>
                     <div class="relative">
-                    <input type="password" id="confirmpassword" class="form-control w-full ps-10" placeholder="please enter your password again">
+                        <input type="password" id="confirmpassword" class="form-control w-full ps-10"
+                            placeholder="please enter your password again">
                         <span class="absolute top-2 left-0 ps-3 text-gray-400">
                             <i class="bi bi-shield-lock"></i>
                         </span>
@@ -65,13 +69,14 @@
                 <div class="my-5"></div>
 
                 <button type="submit" class="btn w-full btn-primary" [disabled]="isLoading">
-                    <app-spinner *ngIf="isLoading"></app-spinner>
+                    <btn-spinner *ngIf="isLoading"></btn-spinner>
                     Sign up
                 </button>
             </form>
 
             <div class="text-sm text-gray-400">
-                <p>Already have an account? <a [routerLink]="commonService.prepareRoute(publicRoutes.Signin)" class="text-emerald-600">Sign in</a> instead.</p>
+                <p>Already have an account? <a [routerLink]="commonService.prepareRoute(publicRoutes.Signin)"
+                        class="text-emerald-600">Sign in</a> instead.</p>
             </div>
 
             <div class="my-5"></div>

@@ -55,8 +55,10 @@
                 </div>
 
                 <button type="submit" class="btn w-full btn-primary" [disabled]="isLoading">
-                    <app-spinner *ngIf="isLoading"></app-spinner>
-                    Sign in
+                    <btn-spinner *ngIf="isLoading" [show]="isLoading"></btn-spinner>
+                    <span class="btn-text" [ngClass]="{'translate-x-0.5': isLoading}">
+                        Sign in
+                    </span>
                 </button>
             </form>
 

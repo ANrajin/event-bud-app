@@ -25,12 +25,16 @@ export class SigninComponent {
 
   signinForm = this.formBuilder.group({
     username: [''],
-    password: ''
+    password: ['']
   });
 
   onFormSubmitHandler = (event: SubmitEvent) => {
     event.preventDefault();
     this.isLoading = true;
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
 
     if (this.signinForm.valid) {
       const formData: Signin = {
@@ -38,11 +42,17 @@ export class SigninComponent {
         password: this.signinForm.get('password')?.value!
       };
 
-      this.iamService.signin(formData);
+      // this.iamService.signin(formData).subscribe({
+      //   next(res) {
+      //     console.log(res);
+      //   },
+      //   error(err) {
+      //     console.error(err);
+      //   },
+      //   complete() {
+      //     console.log("complete");
+      //   },
+      // });
     }
-
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 5000);
   }
 }

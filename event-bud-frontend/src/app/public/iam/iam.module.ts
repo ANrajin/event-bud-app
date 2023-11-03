@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { IamRoutingModule } from './iam-routing.module';
+
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
@@ -17,10 +17,11 @@ import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
     CommonModule,
     IamRoutingModule,
     ReactiveFormsModule,
-    SpinnerComponent
+    SpinnerComponent,
   ],
   exports: [
     SigninComponent,
-    SignupComponent]
+    SignupComponent
+  ]
 })
 export class IamModule { }

@@ -4,63 +4,67 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@layer components{
-    *{
+@layer components {
+    * {
         font-family: 'Inter', sans-serif !important;
         -webkit-font-smoothing: antialiased;
     }
 
     /* Text color */
-    .text-light{
+    .text-light {
         @apply text-slate-400
     }
 
     /* Text size */
-    .text-2xs{
+    .text-2xs {
         font-size: 0.5rem !important;
     }
 
     /* Button */
-    .btn{
+    .btn {
         @apply px-2 py-2 h-11 flex justify-center items-center rounded-md transition ease-in-out duration-300
     }
 
-    .btn:disabled{
+    .btn-text {
+        @apply transition duration-150 ease-in-out;
+    }
+
+    .btn:disabled {
         @apply bg-emerald-500
     }
 
-    .btn-primary{
+    .btn-primary {
         @apply bg-emerald-600 text-white
     }
 
-    .btn-primary:hover{
+    .btn-primary:hover {
         @apply bg-emerald-500
     }
 
-    .btn-primary:focus{
+    .btn-primary:focus {
         @apply outline-none ring-2 bg-emerald-600 ring-offset-1
     }
 
     /* Card */
-    .card{
+    .card {
         @apply py-2 px-4 mb-4 h-full bg-white rounded-xl shadow-md shadow-gray-200
     }
 
-    .card-title{
-        @apply text-gray-900 
+    .card-title {
+        @apply text-gray-900
     }
 
     /* Input */
-    input{
+    input {
         outline: none !important;
         @apply h-10 transition-all duration-100 ease-in-out focus:ring-2 focus:ring-inset focus:ring-emerald-600
     }
 
-    .form-group{
+    .form-group {
         @apply flex flex-col gap-y-1 mb-3
     }
 
-    .form-control{
+    .form-control {
         @apply py-2 px-3 text-sm rounded-lg border border-gray-100
     }
 }
