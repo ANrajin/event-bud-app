@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { PublicModule } from './public/public.module';
 
 import { httpInterceptorProviders } from './_core/interceptors/interceptors.provider';
+import { NOTYF, notyfFactory } from "./shared/utils/notyf.token";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { httpInterceptorProviders } from './_core/interceptors/interceptors.prov
     HttpClientModule
   ],
   providers: [
-    httpInterceptorProviders
+    httpInterceptorProviders,
+    { provide: NOTYF, useFactory: notyfFactory }
   ],
   bootstrap: [AppComponent]
 })

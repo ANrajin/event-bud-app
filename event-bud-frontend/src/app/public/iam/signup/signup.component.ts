@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DatetimeHelper } from 'src/app/_core/helpers/datetime.helper';
 import { CommonService } from 'src/app/_core/services/common.service';
-import { pageTransition } from 'src/app/shared/animations';
+import { pageTransition } from 'src/app/shared/utils/animations';
 import { PublicRoutes } from '../../public.routes';
 
 @Component({

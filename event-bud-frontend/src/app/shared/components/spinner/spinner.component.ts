@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { fadeInOut } from '../animations';
+import { fadeInOut } from '../../utils/animations';
 
 @Component({
   selector: 'btn-spinner',

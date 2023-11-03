@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { DatetimeHelper } from 'src/app/_core/helpers/datetime.helper';
 import { CommonService } from 'src/app/_core/services/common.service';
-import { pageTransition } from 'src/app/shared/animations';
+import { pageTransition } from 'src/app/shared/utils/animations';
 import { PublicRoutes } from '../../public.routes';
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import { IamService } from '../iam.service';
 import { Signin } from './signin.model';
+import { Notyf } from 'notyf';
+import { NOTYF } from 'src/app/shared/utils/notyf.token';
 
 @Component({
   selector: 'app-signin',
@@ -21,7 +23,8 @@ export class SigninComponent {
   constructor(
     public commonService: CommonService,
     private formBuilder: FormBuilder,
-    private iamService: IamService) { }
+    private iamService: IamService,
+    @Inject(NOTYF) private notyf: Notyf) { }
 
   signinForm = this.formBuilder.group({
     username: [''],
@@ -32,9 +35,7 @@ export class SigninComponent {
     event.preventDefault();
     this.isLoading = true;
 
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
+    this.notyf.error("One or more filed under validation is invalid!");
 
     if (this.signinForm.valid) {
       const formData: Signin = {
@@ -42,17 +43,17 @@ export class SigninComponent {
         password: this.signinForm.get('password')?.value!
       };
 
-      // this.iamService.signin(formData).subscribe({
-      //   next(res) {
-      //     console.log(res);
-      //   },
-      //   error(err) {
-      //     console.error(err);
-      //   },
-      //   complete() {
-      //     console.log("complete");
-      //   },
-      // });
+      this.iamService.signin(formData).subscribe({
+        next(res) {
+          console.log(res);
+        },
+        error(err) {
+          console.error(err);
+        },
+        complete() {
+          console.log("complete");
+        },
+      });
     }
   }
 }
