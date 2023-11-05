@@ -22,6 +22,7 @@ public sealed class JwtTokenGenerator : IJwtTokenGenerator
 
     public string GenerateJwtToken(Guid id, string userName, string email)
     {
+        var jti = Guid.NewGuid().ToString();
         var tokenHandler = new JwtSecurityTokenHandler();
 
         var signInCredentials = new SigningCredentials(
@@ -30,10 +31,8 @@ public sealed class JwtTokenGenerator : IJwtTokenGenerator
 
         var claims = new[]
         {
+            new Claim(JwtRegisteredClaimNames.Jti, jti),
             new Claim(JwtRegisteredClaimNames.Sub, userName),
-            new Claim(JwtRegisteredClaimNames.Email, email),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(JwtRegisteredClaimNames.UniqueName, id.ToString()),
         };
 
         var securityTokenDescriptor = new SecurityTokenDescriptor
@@ -43,6 +42,7 @@ public sealed class JwtTokenGenerator : IJwtTokenGenerator
             Subject = new ClaimsIdentity(claims),
             Issuer = _jwtSettings.Issuer,
             Audience = _jwtSettings.Audience,
+            IssuedAt = _dateTimeProvider.UtcNow
         };
 
         var token = tokenHandler.CreateToken(securityTokenDescriptor);

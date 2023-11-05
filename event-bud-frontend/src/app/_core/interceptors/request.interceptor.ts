@@ -7,15 +7,25 @@ import {
 } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
+import {LocalStorageService} from "../../shared/services/localStorage.service";
 
 @Injectable()
 
 export class RequestInterceptor implements HttpInterceptor {
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    constructor(private localStorageService: LocalStorageService) {
+    }
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const requestUrl: string = environment.apiUrl + request.url;
+        const accessToken: string = this.localStorageService.get("token");
 
-        const requestUrl = environment.apiUrl + req.url;
+        if(accessToken) {
+            request = request.clone({
+                headers: request.headers.set('Authorization', 'Bearer ' + accessToken)
+            });
+        }
 
-        return next.handle(req.clone({ url: requestUrl }));
+        request = request.clone({ url: requestUrl });
 
+        return next.handle(request);
     }
 }
