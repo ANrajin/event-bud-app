@@ -48,7 +48,6 @@ export class SigninComponent {
           this.localStorage.put("token", res.token);
         },
         error: (err)=> {
-            this.notyf.error("something went wrong.");
             this.isLoading = false;
         },
         complete: () => {
