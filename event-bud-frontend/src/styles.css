@@ -76,6 +76,10 @@
 }
 
 .notyf__toast .notyf__ripple {
-  height: 60em;
-  width: 60em;
+  height: 60em !important;
+  width: 60em !important;
+}
+
+.notyf__message {
+  font-size: 0.875rem !important;
 }
