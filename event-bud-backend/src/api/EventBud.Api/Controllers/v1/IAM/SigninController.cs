@@ -15,7 +15,8 @@ public class SigninController : ApiBaseController
     
     [HttpPost]
     public async Task<IActionResult> Post(
-        [FromBody] SignInQuery query, CancellationToken cancellationToken)
+        [FromBody] SignInQuery query, 
+        CancellationToken cancellationToken)
     {
         var result = await Sender.Send(query, cancellationToken);
 
