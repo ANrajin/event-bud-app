@@ -3,7 +3,7 @@ import {DatetimeHelper} from 'src/app/_core/helpers/datetime.helper';
 import {CommonService} from 'src/app/_core/services/common.service';
 import {pageTransition} from 'src/app/shared/utils/animations';
 import {PublicRoutes} from '../../public.routes';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Signin} from './signin.model';
 import {LocalStorageService} from "../../../shared/services/localStorage.service";
 import {AuthService} from "../auth.service";
@@ -19,22 +19,26 @@ export class SigninComponent {
   readonly publicRoutes = PublicRoutes;
   readonly currentYear: number = DatetimeHelper.currentYear;
 
+  userName: any;
+  signInForm = this.formBuilder.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required]
+  });
+  protected readonly FormControl = FormControl;
+
   constructor(
     public commonService: CommonService,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private localStorage: LocalStorageService) {
-  }
 
-  signInForm = this.formBuilder.group({
-    username: [''],
-    password: ['']
-  });
+    this.userName = this.signInForm.get('username')
+  }
 
   onFormSubmitHandler = (event: SubmitEvent) => {
     event.preventDefault();
 
-    if (this.signInForm.valid) {
+    // if (this.signInForm.valid) {
       this.isLoading = true;
 
       const formData: Signin = {
@@ -60,6 +64,6 @@ export class SigninComponent {
           this.isLoading = false;
         },
       });
-    }
+    // }
   }
 }

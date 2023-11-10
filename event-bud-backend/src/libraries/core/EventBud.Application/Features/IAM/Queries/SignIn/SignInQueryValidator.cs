@@ -9,7 +9,7 @@ namespace EventBud.Application.Features.IAM.Queries.SignIn
             RuleFor(x => x.UserName)
                 .NotNull()
                 .NotEmpty()
-                .WithMessage("The {PropertyName} is required!");
+                .WithMessage("The Email/Username is required!");
 
             RuleFor(x => x.Password)
                 .Cascade(cascadeMode: CascadeMode.Stop)

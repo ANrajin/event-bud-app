@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AuthRoutingModule } from './auth-routing.module';
+import {AuthRoutingModule} from './auth-routing.module';
 import {SigninComponent} from "./signin/signin.component";
 import {SignupComponent} from "./signup/signup.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {SpinnerComponent} from "../../shared/components/spinner/spinner.component";
+import {ValidationErrorComponent} from "../../shared/components/validation-error/validation-error.component";
 
 
 @NgModule({
@@ -18,10 +19,11 @@ import {SpinnerComponent} from "../../shared/components/spinner/spinner.componen
     AuthRoutingModule,
     ReactiveFormsModule,
     SpinnerComponent,
+    ValidationErrorComponent,
   ],
   exports: [
     SigninComponent,
-    SignupComponent
+    SignupComponent,
   ]
 })
 export class AuthModule { }
