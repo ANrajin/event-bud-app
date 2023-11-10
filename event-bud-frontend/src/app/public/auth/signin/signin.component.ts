@@ -1,12 +1,10 @@
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {DatetimeHelper} from 'src/app/_core/helpers/datetime.helper';
 import {CommonService} from 'src/app/_core/services/common.service';
 import {pageTransition} from 'src/app/shared/utils/animations';
 import {PublicRoutes} from '../../public.routes';
 import {FormBuilder} from "@angular/forms";
 import {Signin} from './signin.model';
-import {Notyf} from 'notyf';
-import {NOTYF} from 'src/app/shared/utils/notyf.token';
 import {LocalStorageService} from "../../../shared/services/localStorage.service";
 import {AuthService} from "../auth.service";
 
@@ -25,8 +23,8 @@ export class SigninComponent {
     public commonService: CommonService,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private localStorage: LocalStorageService,
-    @Inject(NOTYF) private notyf: Notyf) { }
+    private localStorage: LocalStorageService) {
+  }
 
   signInForm = this.formBuilder.group({
     username: [''],
@@ -35,9 +33,10 @@ export class SigninComponent {
 
   onFormSubmitHandler = (event: SubmitEvent) => {
     event.preventDefault();
-    this.isLoading = true;
 
     if (this.signInForm.valid) {
+      this.isLoading = true;
+
       const formData: Signin = {
         username: this.signInForm.get('username')?.value!,
         password: this.signInForm.get('password')?.value!
@@ -47,9 +46,14 @@ export class SigninComponent {
         next: (res) => {
           this.localStorage.put("token", res.token);
         },
-        error: (err)=> {
-            this.isLoading = false;
-          console.log(err);
+        error: (err: Signin) => {
+          this.isLoading = false;
+
+          for (const key in err) {
+            this.signInForm.get(key)?.setErrors({
+              messages: err[key as keyof Signin]
+            });
+          }
         },
         complete: () => {
           window.location.href = "/admin/dashboard";

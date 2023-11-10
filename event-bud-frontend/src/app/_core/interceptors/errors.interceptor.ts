@@ -3,6 +3,7 @@ import {Inject, Injectable} from "@angular/core";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {NOTYF} from "../../shared/utils/notyf.token";
 import {Notyf} from "notyf";
+import {IError} from "../../shared/interfaces/error.interface";
 
 @Injectable()
 export class ErrorsInterceptor implements HttpInterceptor {
@@ -21,7 +22,7 @@ export class ErrorsInterceptor implements HttpInterceptor {
           errorMessage = errors.error.title;
 
         if (errors.status == 400)
-          return throwError(() => errors.error);
+          return throwError(() => this.handleFormErrors(errors.error));
 
         this.notyf.error({
           message: errorMessage,
@@ -31,5 +32,20 @@ export class ErrorsInterceptor implements HttpInterceptor {
         return throwError(() => new Error(errorMessage));
       })
     );
+  }
+
+  private handleFormErrors(errors: IError[]) {
+    let errorMessages: any = {};
+
+    errors.forEach((err: IError) => {
+      const {title, message} = err;
+
+      if (errorMessages[title.toLowerCase()])
+        errorMessages[title.toLowerCase()].push(message);
+      else
+        errorMessages[title.toLowerCase()] = [message];
+    });
+
+    return errorMessages;
   }
 }
