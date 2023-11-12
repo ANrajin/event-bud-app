@@ -24,6 +24,8 @@
                 </div>
             </div>
 
+          <app-alert *ngIf="serverErrors.length > 0" [messages]="serverErrors"></app-alert>
+
             <form class="my-5" [formGroup]="signInForm" (ngSubmit)="onFormSubmitHandler($event)">
                 <div class="form-group">
                     <label for="email">Email</label>

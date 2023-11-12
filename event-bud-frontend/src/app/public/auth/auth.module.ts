@@ -7,6 +7,7 @@ import {SignupComponent} from "./signup/signup.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {SpinnerComponent} from "../../shared/components/spinner/spinner.component";
 import {ValidationErrorComponent} from "../../shared/components/validation-error/validation-error.component";
+import {AlertComponent} from "../../shared/components/alert/alert.component";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {ValidationErrorComponent} from "../../shared/components/validation-error
     ReactiveFormsModule,
     SpinnerComponent,
     ValidationErrorComponent,
+    AlertComponent,
   ],
   exports: [
     SigninComponent,

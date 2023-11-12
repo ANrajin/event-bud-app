@@ -30,13 +30,13 @@ public sealed class SignInQueryHandler : ICommandHandler<SignInQuery, SignInQuer
         
         if (user is null)
             return Result.Failure<SignInQueryResponse>(
-                new Error("Authentication Failed", "Invalid username or password!"));
+                new Error("Authentication Failed", "Oops! We failed to validate these credentials."));
         
         var response = await _signInManagerAdapter.CheckPasswordAsync(user, request.Password, false);
         
         if (!response.Succeeded)
             return Result.Failure<SignInQueryResponse>(
-                new Error("Authentication Failed", "Invalid username or password!"));
+                new Error("Authentication Failed", "Oops! We failed to validate these credentials."));
         
         return Result.Success(new SignInQueryResponse
         {
