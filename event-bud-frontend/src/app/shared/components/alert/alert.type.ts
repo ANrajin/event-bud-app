@@ -1,5 +1,6 @@
 export enum AlertType {
   Success,
   Warning,
-  Danger
+  Danger,
+  Info,
 }

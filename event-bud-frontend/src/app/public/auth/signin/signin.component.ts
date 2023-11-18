@@ -21,6 +21,7 @@ export class SigninComponent {
   readonly currentYear: number = DatetimeHelper.currentYear;
 
   serverErrors: string[] = [];
+  sampleMessage: string[] = ["This is a sample message to test the alert html."]
 
   signInForm = this.formBuilder.group({
     username: ['', Validators.required],
