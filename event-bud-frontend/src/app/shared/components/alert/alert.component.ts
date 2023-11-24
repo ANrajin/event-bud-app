@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {slideDown} from "../../utils/animations";
 import {AlertType} from "./alert.type";
@@ -15,6 +15,9 @@ export class AlertComponent {
   @Input() messages: string[] = [];
   @Input() type: AlertType = AlertType.Success;
   @Input() dismissible: boolean = false;
+  @Input() show: boolean = false;
+
+  @Output() hideAlert = new EventEmitter<boolean>();
 
   @ViewChild("alertElement", {static: false}) alertElement!: ElementRef;
 
@@ -42,18 +45,7 @@ export class AlertComponent {
   }
 
   protected dismissHandler(): void {
-    const component = this.elementRef.nativeElement;
-    const elem = this.alertElement.nativeElement;
-
-    if (elem) {
-      elem.style.height = 0;
-      elem.style.padding = 0;
-      elem.style.margin = 0;
-      elem.style.opacity = 0;
-
-      setTimeout(() => {
-        component.remove();
-      }, 300);
-    }
+    this.show = false;
+    this.hideAlert.emit(this.show);
   }
 }

@@ -24,12 +24,8 @@
                 </div>
             </div>
 
-          <app-alert
-            *ngIf="serverErrors.length > 0"
-            [dismissible]="true"
-            [messages]="serverErrors"
-            [type]="AlertType.Danger"
-          ></app-alert>
+          <app-alert (hideAlert)="onAlertCloseHandler($event)" [dismissible]="true" [messages]="serverErrors"
+                     [show]="serverErrors.length > 0" [type]="AlertType.Danger"></app-alert>
 
             <form class="my-5" [formGroup]="signInForm" (ngSubmit)="onFormSubmitHandler($event)">
                 <div class="form-group">

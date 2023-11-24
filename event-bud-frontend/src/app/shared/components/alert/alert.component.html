@@ -1,5 +1,5 @@
 <ng-container>
-  <div #alertElement [@slideDown] [ngClass]="alertTypeClass()" class="alert">
+  <div #alertElement *ngIf="show" [@slideDown] [ngClass]="alertTypeClass()" class="alert">
     <ul *ngIf="messages.length > 1; else elseBlock" class="list-disc ps-5">
       <li *ngFor="let err of messages">{{err}}</li>
     </ul>

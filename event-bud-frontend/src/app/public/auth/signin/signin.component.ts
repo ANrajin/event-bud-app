@@ -21,7 +21,6 @@ export class SigninComponent {
   readonly currentYear: number = DatetimeHelper.currentYear;
 
   serverErrors: string[] = [];
-  sampleMessage: string[] = ["This is a sample message to test the alert html."]
 
   signInForm = this.formBuilder.group({
     username: ['', Validators.required],
@@ -36,7 +35,7 @@ export class SigninComponent {
   }
   protected readonly AlertType = AlertType;
 
-  onFormSubmitHandler = (event: SubmitEvent) => {
+  protected onFormSubmitHandler = (event: SubmitEvent) => {
     event.preventDefault();
 
     if (this.signInForm.invalid) return;
@@ -64,5 +63,9 @@ export class SigninComponent {
         this.isLoading = false;
       },
     });
+  }
+
+  protected onAlertCloseHandler = (e: any) => {
+    this.serverErrors = [];
   }
 }
