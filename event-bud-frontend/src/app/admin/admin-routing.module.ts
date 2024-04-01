@@ -7,28 +7,36 @@ import {ElementsComponent} from './views/elements/elements.component';
 import {EventsComponent} from './views/events/events.component';
 import {ProfileComponent} from './views/settings/profile/profile.component';
 import {UsersComponent} from './views/settings/users/users.component';
+import {TestComponent} from "./views/events/test/test.component";
 
 const routes: Routes = [
-    {
-        path: '',
-        redirectTo: AdminRoutes.Dashboard,
-        pathMatch: 'full'
-    },
-    {
-        title: 'Dashboard',
-        path: AdminRoutes.Dashboard,
-        component: DashboardComponent
-    },
-    {
-        title: 'Events',
-        path: AdminRoutes.Events,
-        component: EventsComponent
-    },
-    {
-        title: 'Elements',
-        path: AdminRoutes.Elements,
-        component: ElementsComponent
-    },
+  {
+      path: '',
+      redirectTo: AdminRoutes.Dashboard,
+      pathMatch: 'full'
+  },
+  {
+      title: 'Dashboard',
+      path: AdminRoutes.Dashboard,
+      component: DashboardComponent
+  },
+  {
+      title: 'Events',
+      path: AdminRoutes.Events,
+      component: EventsComponent,
+      children: [
+        {
+          path: 'testing',
+          component: TestComponent,
+          outlet: 'test'
+        },
+      ]
+  },
+  {
+      title: 'Elements',
+      path: AdminRoutes.Elements,
+      component: ElementsComponent
+  },
   {
     path: AdminRoutes.Settings,
     children: [
